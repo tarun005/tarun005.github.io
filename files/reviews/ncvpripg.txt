@@ -1,0 +1,87 @@
+## Reviewer 1
+
+1. Please provide a summary of the paper highlighting the contributions, positive aspects and negative aspects. Please provide both aspects for the paper.
+
+    The paper proposes two smaller, subsampled versions of the IDD dataset to enable quicker prototyping and benchmarking in segmentation research. These datasets are especially useful when working on problems that are a function of the number of parameters, e.g., architecture search, optimal hyper-parameter search, etc. The datasets have similar label statistics and smaller number of labels. The paper shows that with only after an hour of training on the smaller versions, the models are able to achieve reasonable prediction accuracies on the full IDD dataset.
+
+    Strengths:
+
+    Semantic segmentation research with deep learning typically places large demands on computational resources, which could hinder progress in research and discourage researchers from tackling such problems. This paper proposes a solution that could reduce the severity of this problem.
+
+    Results from Neural Architecture Search on ERFNet model suggest that the models that perform well on IDD-Lite seem to also perform well on CS.
+
+    Weakness:
+    1. While sub-sampling to maintain the variation from the original dataset, diversity is only measured at a coarse level -- i.e., based on labels. Are we losing information by creating smaller datasets? I.e., is a bunch of variation that would’ve been good to model, now lost?
+    2. On a related note, the technical analysis and approach for subsampling the dataset seems a bit preliminary (i.e., matching the class frequency). What about inter-class variance/diversity? What about the label distribution per-image?
+    3. The correlation in performance between networks evaluated on CityScapes and IDD-Lite are only at convergence. Thus, it’s unclear if models that perform better on IDD-Lite will necessarily perform better on CityScapes, and models that perform worse on IDD-Lite will perform worse on CityScapes. Even in the example shown in Table 4a, there seems to be a discrepancy -- D* that performs better on IDD-Lite performs worse on CS. It’s a bit premature to claim correlation in between performance on two datasets based on these data-points. It would be good to measure correlation across training -- i.e., at every N steps of training iterations, plot evaluation IoU on both the IDD-Lite and CS val sets. If there exists a correlation, we should be able to see this trend on a plot like this.
+    4. The intended use for these datasets are as a starting point -- to choose the right architecture or model parameters. In the end of course, it is imperative that we train our model on the full-sized dataset. This is not so much a weakness, as a limitation, but one that’s reasonable.
+
+2. Please rate the originality of the work
+    Okay
+
+3. Please rate the technical correctness
+    Probably incorrect
+
+4. Please rate the clarity of presentation
+    Clear 
+
+5. Detailed comments or suggestions to the authors for improvements
+    See "weaknesses". The main point of concerns are regarding using only the label frequency as a method to measure diversity of the data, and the claim regarding correlation of performance of models across the IDD-Lite and CS datasets. 
+
+6. Overall rating for the paper
+    Weak Reject
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+## Reviewer 2
+
+1. Please provide a summary of the paper highlighting the contributions, positive aspects and negative aspects. Please provide both aspects for the paper.
+
+	The authors contribute a subset of the large IDD dataset, and claim to have captured enough information so that models trained on the subset for semantic segmentation exhibit acceptable performance on the original dataset. Further models are trained on the subsets and benchmarked against the test set of original data sets, to claim effectiveness in environments constrained by computational resources and/or by training time.
+
+2. Please rate the originality of the work
+	Strong
+
+3. Please rate the technical correctness
+	Technically correct
+
+4. Please rate the clarity of presentation
+	Clear 
+
+5. Detailed comments or suggestions to the authors for improvements
+	The intent of the paper is clear, and the claims have been well substantiated by experiments, that have been well detailed out to the level of hardware used and a comparison on inference time across datasets. The methodology for creating a subset of the original dataset have been well documented.
+
+Minor details:
+	1. Page 4. Fig 3. The y-axis is labeled as `#pixels (Log Scale),' where as the tics are linear. There is some incoherence here.
+	2. Page 6. Para 2 starting `Each of the ...': the phrase `filled from a set of 1 atros3×3, 3 sep5×5, 2 atros5×5, 4 sep3×3,' is unclear. What are `atros3x3' and `sep5x5', and what do the preceding numbers mean; are they indices of a list or are they counts of these items (layers?)?
+	3. Sec 4. Table 3a Col 5: Header title is `mIOU', which may be corrected as `mIoU' (o in lowercase) to be coherent with across headers in the table.
+
+6. Overall rating for the paper
+	Strong Accept
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+## Reviewer 3
+
+
+1. Please provide a summary of the paper highlighting the contributions, positive aspects and negative aspects. Please provide both aspects for the paper.
+    The author presented two subsets of IDD and showed models trained on those two datasets achieve reasonable performance accuracy.The author also presented the fact that those models trained on those proposed datasets correlate well with other dataset as well.
+    Author has described the statistics of their datasets well and also presented the results in well-format. They have shown their methods and it is very simple and easy to reproducible as well. The aim of this paper is to be able to train a network which achieves reasonable accuracy with less resource(both GPU memory and time) and it is well established.
+    But the novelty of the work is very limited to research as the accuracy gap between actual dataset and new datasets is significant.
+
+2. Please rate the originality of the work
+    Okay
+
+3. Please rate the technical correctness
+    Technically correct
+
+4. Please rate the clarity of presentation
+    Clear 
+
+5. Detailed comments or suggestions to the authors for improvements
+    I would recommend the author to publish their datasets so that his/her results can be validated.
+
+6. Overall rating for the paper
+    Weak Accept
+
+------------------------------------------------------------------------------------------------------------------------------------------------

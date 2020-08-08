@@ -1,0 +1,72 @@
+## Reviewer 1
+
+1. Summary. In 3-5 sentences, describe the key ideas, experiments, and their significance.
+    The paper proposes a semi-supervised segmentation method to train a single model on multiple domains. And the entropy module utilizes a pixel-level entropy regularization scheme to perform the alignment of the features from different domains. Experiments are conducted on both indoor and outdoor segmentation datasets compared with other semi-supervised approaches.
+2. What are the strengths of the paper? Clearly explain why these aspects of the paper are valuable.
+    1. The proposed method can train one single model on multiple domains, and doesn’t need much annotated samples.
+    2. Many experiments are done to prove its effectiveness.
+3. What are the weaknesses of the paper? Clearly explain why these aspects of the paper are weak.
+    1. The writing of the paper should be improved, including some grammar mistakes.
+    2. Lack of novelty, all the methods utilized in the paper are not innovative. To me, the proposed method only add a kind of cross domain loss, which is quite usual in other methods.
+    3. The paper is not well organized:
+    - Figure 3 is blurry.
+    4. The experiment of training on 3 or more domains should be provided.
+4. Paper rating (pre-rebuttal)
+    Weak reject
+5. Justification of rating. What are the most important factors for your overall recommendation?
+    The proposed method is not novel enough to be accepted.
+6. Additional comments.
+    The method should be improved.
+10. Final recommendation based on ALL the reviews, rebuttal, and discussion (post-rebuttal)
+    Weak reject
+11. Final justification (post-rebuttal)
+    I've read the rebuttal. I think the authors need some more efforts to polish this work.
+
+## Reviewer 2
+
+1. Summary. In 3-5 sentences, describe the key ideas, experiments, and their significance.
+    The authors proposed a method for universal semi-supervised semantic segmentation. Specifically, an entropy module is proposed to perform entropy regularization across datasets.
+2. What are the strengths of the paper? Clearly explain why these aspects of the paper are valuable.
+    1. The paper is well written.
+    2. The idea of using an embedding space to align semantics across dataset is novel.
+    3. The experiments show competitive results.
+    4. It is interesting to see the corresponding semantic class in different dataset actually have different meaning according to the TSNE. It might be useful in future works to align annotation from different user/dataset.
+3. What are the weaknesses of the paper? Clearly explain why these aspects of the paper are weak.
+    1. Since the entropy module is the major novelty, I think it is also worthy to compare the proposed module on single dataset with the conventional entropy regularization.
+    2. Not really a weakness, but considering the Cityscapes dataset in all settings, there is almost no improvement by training with other datasets. The use case of the proposed method might be limited.
+4. Paper rating (pre-rebuttal)
+    Weak accept
+5. Justification of rating. What are the most important factors for your overall recommendation?
+    Overall, I think the proposed method is novel and could potentially open other research directions. The experiments also validate the effectiveness of the proposed method.
+10. Final recommendation based on ALL the reviews, rebuttal, and discussion (post-rebuttal)
+    Weak accept
+11. Final justification (post-rebuttal)
+    The authors' rebuttal address my concerns. I think the proposed method is novel and valid under this specific setup (segmentation+semi+multi-dataset).
+
+
+## Reviewer 3
+
+
+1. Summary. In 3-5 sentences, describe the key ideas, experiments, and their significance.
+    This paper proposed a semi-supervised cross-datasets semantic segmentation approach. It proposed an entropy module to perform both intra and inter dataset entropy regularization besides common supervise loss in a multi-dataset semi-supervised learning scenario.
+2. What are the strengths of the paper? Clearly explain why these aspects of the paper are valuable.
+    This paper is easy to follow. The entropy module is interesting.
+3. What are the weaknesses of the paper? Clearly explain why these aspects of the paper are weak.
+    1, It is unclear how the proposed entropy module, which is the main novelty of this paper, is superior to the tradition softmax entropy regularization (cf. item 1 in additional comments). The paper's novelty is incremental without the entropy module.
+    2, Fig. 2 and fig. 3 are not very self-explanatory.
+    3, Some of the experiments is artificial (cf. item 3 in additional comments).
+4. Paper rating (pre-rebuttal)
+    Weak reject
+5. Justification of rating. What are the most important factors for your overall recommendation?
+    The most concerning part of this paper are that the experiment missed several baselines that should be there (cf. item 1,3 in additional comments). It is hard to justify the proposed entropy module without those baselines. Besides, the performance improvements are somehow incremental as well (1%-4%).
+6. Additional comments.
+    1, What is the advantage of the proposed entropy module over directly regularizing softmax output? The entropy module looks unnecessary to me. The authors claimed that "This embedding approach helps in achieving semantic transfer between datasets with disparate label sets". But you can input your image representation in domain 1 to the decoder in domain 2 to obtain the classification score v_12 in domain 2 and further regularize it using eq. 3, isn't it? Even if the entropy module is somehow empirically superior to the naive softmax entropy regularization, the author should design an apple-to-apple experiment to justify this. However, no such experiments were shown.
+    2, Cross-dataset entropy regularizing pixels with exclusive classes in their own domain sounds counterintuitive to me. Isn't this going to mislead feature extractor to project pixels to the classes that they do not belong to(in another domain)? E.g. "wall" is a cityscape-only class, after introducing univ-full, its class-wise prediction dropped from 10.7 to 0 in the upper part of Table 2. This happens to truck and motorcycle as well.
+    3, The univ-basic (multitask segmentation network) baseline is missing from the Cross Domain Experiment (Table 6). "so the simple joint training techniques generally give poor results." we don't know that without the number. It is hard to know if the performance improvement comes from extra data from two domains or the proposed method without this baseline.
+    4, You missed some references and comparisons to the state-of-the-art competitors. Please refer to table.9 in [1] for a complete review & comparison of recent domain adaptation for segmentation methods.
+    [1] A Curriculum Domain Adaptation Approach to the Semantic Segmentation of Urban Scenes, TPAMI
+10. Final recommendation based on ALL the reviews, rebuttal, and discussion (post-rebuttal)
+    Weak accept
+11. Final justification (post-rebuttal)
+    New experiment has addressed my concerns. I will raise my rating to weak accept.
+
