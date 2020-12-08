@@ -1,0 +1,189 @@
+<html><head lang="en"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>OpenRooms</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" type="image/png" href="https://ucsd-openrooms.github.io/index_files/icon.png">
+    <link rel="stylesheet" href="FLAVR_files/bootstrap.css">
+    <link rel="stylesheet" href="FLAVR_files/font-awesome.css">
+    <link rel="stylesheet" href="FLAVR_files/codemirror.css">
+    <link rel="stylesheet" href="FLAVR_files/app.css">
+    <link rel="stylesheet" href="FLAVR_files/bootstrap_002.css">
+
+    <script type="text/javascript" async="" src="FLAVR_files/analytics_002.js"></script><script type="text/javascript" async="" src="FLAVR_files/analytics.js"></script>
+    <script type="text/javascript" async="" src="FLAVR_files/analytics1.js"></script>
+    <script async="" src="FLAVR_files/js.dms"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-110862391-3');
+    </script>
+
+    <script src="FLAVR_files/jquery.js"></script>
+    <script src="FLAVR_files/bootstrap.js"></script>
+    <script src="FLAVR_files/codemirror.js"></script>
+    <script src="FLAVR_files/clipboard.js"></script>
+
+    <script src="FLAVR_files/app.js"></script>
+</head>
+
+<body data-gr-c-s-loaded="true">
+    <div class="container" id="main">
+        <div class="row">
+            <h1 class="col-md-12 text-center">
+                FLAVR: Flow-Agnostic Video Representations for Fast Frame Interpolation
+            </h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="https://tarun005.github.io/", target="_blank">
+                          Tarun Kalluri
+                        </a><sup>1</sup>
+                    </li>
+                    <li>
+                        <a href="https://www.cs.cmu.edu/~dpathak/", target="_blank">
+                          Deepak Pathak
+                        </a><sup>2</sup>
+                    </li>
+                    <li>
+                        <a href="http://cseweb.ucsd.edu/~mkchandraker/", target="_blank">
+                          Manmohan Chandraker
+                        </a><sup>1</sup>
+                    </li>
+                    <li>
+                        <a href="https://dutran.github.io/", target="_blank">
+                          Du Tran
+                        </a><sup>3</sup>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <sup>1</sup>UC San Diego
+                    </li>
+                    <li>
+                        <sup>2</sup>Carnegie Mellon University
+                    </li>
+                    <li>
+                        <sup>3</sup>Facebook AI
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="PaperArxivPdf">
+                            <img src="FLAVR_files/paper.jpg" height="120px"><br>
+                                <h4><strong>Paper</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="TechnicalVideo">
+                            <img src="FLAVR_files/youtube_icon_dark.png" height="120px"><br>
+                                <h4><strong>Project Video</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a>
+                            <img src="FLAVR_files/github_pad.png" height="120px"><br>
+                                <h4><strong>Code</strong></h4>(Coming soon)
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    &nbsp;&nbsp;&nbsp;
+                </h3>
+                <video id="v0" autoplay="autoplay" loop="" muted="muted" controls="controls" width="100%">
+                  <source src="FLAVR_files/example.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Overview
+                </h3>
+                <img src="FLAVR_files/teaser.png" class="img-responsive" alt="overview"><br>
+                <p class="text-justify">
+                A majority of approaches solve the problem of video frame interpolation by computing bidirectional optical flow between adjacent frames of a video followed by a suitable warping algorithm to generate the output frames. However, methods relying on optical flow often fail to model occlusions and complex non-linear motions directly from the video and introduce additional bottlenecks unsuitable for real time deployment. To overcome these limitations, we propose a flexible and efficient architecture that makes use of 3D space-time convolutions to enable end to end learning and inference for the task of video frame interpolation. Our method efficiently learns to reason about non-linear motions, complex occlusions and temporal abstractions resulting in improved performance on video interpolation, while requiring no additional inputs in the form of optical flow or depth maps. Due to its simplicity, our proposed method improves the inference speed by 384x compared to the current most accurate method and 23x compared to the current fastest on 8x interpolation. In addition, we evaluate our model on a wide range of challenging settings and consistently demonstrate superior qualitative and quantitative results compared with current methods on various popular benchmarks including Vimeo-90K, UCF101, DAVIS, Adobe, and GoPro. Finally, we demonstrate that video frame interpolation can serve as a useful self-supervised pretext task for action recognition, optical flow estimation, and motion magnification.
+                </p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Highlights
+                </h3>
+                <p class="text-justify">
+                    </p><ul>
+                        <li>
+                            A flow-free, completely learning based appproach for video frame interpolation. 
+                        </li>
+                        <li>
+                            End-to-end trainable on large scale unlabeled videos with arbitrary interpolation factors.
+                        </li>
+                        <li>
+                            384x faster than current best approach and 23x faster than current fastest on 8x interpolation.
+                        </li>
+                        <li>
+                            Learned representations useful for downstream tasks like action recognition and optical flow.
+                        </li>
+                        <li>
+                            All code and trained models to be publicly available.
+                        </li>
+                    </ul>
+                <p></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Technical Video
+                </h3>
+                <div class="text-center">
+                    <video id="v0" autoplay="autoplay" loop="" muted="muted" controls="controls" width="100%">
+                        <source src="FLAVR_files/pipeline.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+        
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Acknowledgments
+                </h3>
+                The website template was borrowed from <a href="https://ucsd-openrooms.github.io/">Zhenqin Li</a>.
+                <p></p>
+            </div>
+        </div>
+    </div>
+
+
+
+</body></html>
