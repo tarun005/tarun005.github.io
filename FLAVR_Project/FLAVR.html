@@ -2,12 +2,11 @@
     
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>OpenRooms</title>
+    <title>FLAVR Video Interpolation</title>
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="icon" type="image/png" href="https://ucsd-openrooms.github.io/index_files/icon.png">
     <link rel="stylesheet" href="FLAVR_files/bootstrap.css">
     <link rel="stylesheet" href="FLAVR_files/font-awesome.css">
     <link rel="stylesheet" href="FLAVR_files/codemirror.css">
@@ -88,13 +87,13 @@
                     <ul class="nav nav-pills nav-justified">
                         <li>
                             <a href="PaperArxivPdf">
-                            <img src="FLAVR_files/paper.jpg" height="120px"><br>
+                            <img src="FLAVR_files/paper.png" height="120px"><br>
                                 <h4><strong>Paper</strong></h4>
                             </a>
                         </li>
                         <li>
                             <a href="TechnicalVideo">
-                            <img src="FLAVR_files/youtube_icon_dark.png" height="120px"><br>
+                            <img src="FLAVR_files/thumbnail.png" height="120px"><br>
                                 <h4><strong>Project Video</strong></h4>
                             </a>
                         </li>
@@ -112,18 +111,6 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
-                    &nbsp;&nbsp;&nbsp;
-                </h3>
-                <video id="v0" autoplay="autoplay" loop="" muted="muted" controls="controls" width="100%">
-                  <source src="FLAVR_files/example.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h3>
                     Overview
                 </h3>
                 <img src="FLAVR_files/teaser.png" class="img-responsive" alt="overview"><br>
@@ -132,7 +119,36 @@
                 </p>
             </div>
         </div>
-        
+
+        <table width="100%">
+        <tr>
+        <td align="center" valign="top" width="45%">
+        <div class="row">
+            <div class="col-md-16 col-md-offset-2">
+                <h3>
+                    &nbsp;&nbsp;&nbsp;
+                </h3>
+                <video id="v0" loop="true" muted="muted" controls="controls" width="100%">
+                  <source src="https://dcviproject-vid-davis.s3-us-west-2.amazonaws.com/Videos/SloMoEffects.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        </td>
+        <td align="left" valign="top" width="45%">
+        <div class="row">
+            <div class="col-md-16 col-md-offset-2">
+                <h3>
+                    &nbsp;&nbsp;&nbsp;
+                </h3>
+                <video id="v0" loop="true" muted="muted" controls="controls" width="100%">
+                  <source src="https://dcviproject-vid-davis.s3-us-west-2.amazonaws.com/Videos/downstream.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        </td>
+        </tr>
+        </table>
+
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
@@ -159,14 +175,16 @@
                 <p></p>
             </div>
         </div>
+
+
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
-                    Technical Video
+                    Project Video
                 </h3>
                 <div class="text-center">
-                    <video id="v0" autoplay="autoplay" loop="" muted="muted" controls="controls" width="100%">
-                        <source src="FLAVR_files/pipeline.mp4" type="video/mp4">
+                    <video id="v0" loop="true" muted="muted" controls="controls" width="100%">
+                        <source src="https://dcviproject-vid-davis.s3-us-west-2.amazonaws.com/Videos/FLAVRProjectVideo.mp4" type="video/mp4">
                     </video>
                 </div>
             </div>
