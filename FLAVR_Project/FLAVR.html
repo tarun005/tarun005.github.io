@@ -36,7 +36,7 @@
     <div class="container" id="main">
         <div class="row">
             <h1 class="col-md-12 text-center">
-                FLAVR: Flow-Agnostic Video Representations <br> for Fast Frame Interpolation
+                <span style="font-size:40px"> FLAVR: Flow-Agnostic Video Representations <br> for Fast Frame Interpolation </span>
             </h1>
         </div>
         <div class="row">
@@ -44,23 +44,23 @@
                 <ul class="list-inline">
                     <li>
                         <a href="https://tarun005.github.io/", target="_blank">
-                          Tarun Kalluri
-                        </a><sup>1</sup>
+                          <span style="font-size:24px"> Tarun Kalluri 
+                        </a><sup>1</sup> </span>
                     </li>
                     <li>
                         <a href="https://www.cs.cmu.edu/~dpathak/", target="_blank">
-                          Deepak Pathak
-                        </a><sup>2</sup>
+                          <span style="font-size:24px"> Deepak Pathak 
+                        </a><sup>2</sup> </span>
                     </li>
                     <li>
                         <a href="http://cseweb.ucsd.edu/~mkchandraker/", target="_blank">
-                          Manmohan Chandraker
-                        </a><sup>1</sup>
+                          <span style="font-size:24px"> Manmohan Chandraker 
+                        </a><sup>1</sup> </span>
                     </li>
                     <li>
                         <a href="https://dutran.github.io/", target="_blank">
-                          Du Tran
-                        </a><sup>3</sup>
+                          <span style="font-size:24px"> Du Tran 
+                        </a><sup>3</sup> </span>
                     </li>
                 </ul>
             </div>
@@ -70,42 +70,39 @@
             <div class="col-md-12 text-center">
                 <ul class="list-inline">
                     <li>
-                        <sup>1</sup>UC San Diego
+                        <span style="font-size:18px"> <sup>1</sup>UC San Diego </span>
                     </li>
                     <li>
-                        <sup>2</sup>Carnegie Mellon University
+                        <span style="font-size:18px"> <sup>2</sup>Carnegie Mellon University </span>
                     </li>
                     <li>
-                        <sup>3</sup>Facebook AI
+                        <span style="font-size:18px"> <sup>3</sup>Facebook AI </span>
                     </li>
                 </ul>
             </div>
         </div>
 
-        <div class="row">
-                <div class="col-md-8 col-md-offset-2 text-center">
-                    <ul class="nav nav-pills nav-justified">
-                        <li>
-                            <a href="PaperArxivPdf">
-                            <img src="FLAVR_files/paper.png" height="120px"><br>
-                                <h4><strong>Paper</strong></h4>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="TechnicalVideo">
-                            <img src="FLAVR_files/thumbnail.png" height="120px"><br>
-                                <h4><strong>Project Video</strong></h4>
-                            </a>
-                        </li>
-                        <li>
-                            <a>
-                            <img src="FLAVR_files/github_pad.png" height="120px"><br>
-                                <h4><strong>Code</strong></h4>(Coming soon)
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-        </div>
+        <br>
+
+        <table width="800px" align="center">
+        <tr>
+          <td align=center width=70px>
+            <center>
+              <span style="font-size:24px"><a href="HyperLink">[Paper]</a></span>
+            </center>
+          </td>
+          <td align=center width=70px>
+            <center>
+              <span style="font-size:24px"><a href="YoutubeVideo"> [Project Video] </a></span>
+            </center>
+          </td>
+          <td align=center width=70px>
+            <center>
+              <span style="font-size:24px"><a href="Code"> [Code] <br> (Coming Soon) </a></span>
+            </center>
+          </td>
+      </tr>
+      </table>
 
 
         <div class="row">
@@ -120,7 +117,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
         	<div class="col-md-8 col-md-offset-2">
 		        
 		        <table width="100%">
@@ -160,7 +157,7 @@
 		        </table>
 
         	</div>
-        </div>
+        </div> -->
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -170,24 +167,30 @@
                 <p class="text-justify">
                     </p><ul>
                         <li>
-                            A flow-free, completely learning based appproach for video frame interpolation. 
-                        </li>
-                        <li>
-                            End-to-end trainable on large scale unlabeled videos with arbitrary interpolation factors.
+                            A flow-free, end-to-end learning based appproach for video frame interpolation. 
                         </li>
                         <li>
                             384x faster than current best approach and 23x faster than current fastest on 8x interpolation.
                         </li>
                         <li>
-                            Learned representations useful for downstream tasks like action recognition and optical flow.
-                        </li>
-                        <li>
-                            All code and trained models to be publicly available.
+                            Learns useful representations for downstream tasks like action recognition and optical flow.
                         </li>
                     </ul>
                 <p></p>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <h4 class="text-center">
+                    SloMo Filter Using FLAVR
+                </h4>
+                <video id="v0" autoplay="true" loop="true" muted="muted" controls="controls" width="100%">
+                  <source src="FLAVR_files/SloMoYoutube.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -201,7 +204,7 @@
                 </div>
             </div>
         </div>
-        
+
         
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -213,6 +216,7 @@
             </div>
         </div>
     </div>
+
 
 
 
