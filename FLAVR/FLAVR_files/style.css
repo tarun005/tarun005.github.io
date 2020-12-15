@@ -10,7 +10,21 @@ body {
 	font-size:18px;
 }
 
+#grayout {
+    opacity: 0.4;
+    filter: alpha(opacity=40); /* msie */
+}
 
+a {
+  color: #0d4580;
+  text-decoration: none;
+}
+
+a:focus,
+a:hover {
+  color: #f09228;
+  text-decoration: none;
+}
 
 .layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
     box-shadow:
