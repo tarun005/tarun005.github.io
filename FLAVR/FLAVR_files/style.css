@@ -10,15 +10,15 @@ body {
 	font-size:18px;
 }
 
+.center {
+  display: block;
+  margin-left: 230;
+}
+
 #grayout {
     opacity: 0.4;
     filter: alpha(opacity=40); /* msie */
 }
-
-
-.div-1 {
-        background-color: #DCDCDC;
-    }
 
 
 a {
