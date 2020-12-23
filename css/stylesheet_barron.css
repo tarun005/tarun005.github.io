@@ -74,7 +74,10 @@ a:hover {
   text-decoration: none;
 }
 
-body,
+body {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 17px
+  },
 td,
 th,
 tr,
@@ -86,7 +89,7 @@ a {
 
 strong {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 17px;
 }
 
 heading {
@@ -96,7 +99,7 @@ heading {
 
 papertitle {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 700
 }
 
