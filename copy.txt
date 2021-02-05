@@ -1,0 +1,297 @@
+<!DOCTYPE HTML>
+<html lang="en"><head>
+
+  <title>Tarun Kalluri</title>
+  
+  <meta name="author" content="Tarun Kalluri">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" type="text/css" href="css/stylesheet_barron.css">
+  <link rel="icon" type="image/png" href="images/ucsd_logo.png">
+</head>
+
+
+<body>
+
+
+&nbsp;&nbsp;
+
+<div id="container">
+		<div id="first-outer">
+			<div id="first-inner">
+				<p style="text-align:center">
+                <name>Tarun Kalluri</name>
+              </p>
+			</div>
+		</div>
+		<div id="second-outer">
+			<div id="second-inner">
+			
+<table>
+
+<tr>
+
+<td>
+
+<p> I am a second-year PhD student in the CSE department at UCSD advised by <a href="http://cseweb.ucsd.edu/~mkchandraker/" target="_blank"> Prof. Manmohan Chandrakar</a>. My research interests span the areas of computer vision and machine learning. I am particularly interested in learning representations of images and videos from limited labeled data that are useful and transferable across a wide range of domains. 
+<!-- <a href="http://jacobsschool.ucsd.edu/visualcomputing/" target="_blank">Our group</a> at UCSD works on a wider variety of problems in computer vision involving graphics, 3D reconstruction, material estimation and robotics. </p> -->
+
+<p> I worked as a research assistant at Centre for Visual Information and Technology <a href="https://cvit.iiit.ac.in/" target="_blank">(CVIT)</a>, IIIT Hyderabad on various problems related to semantic understanding from large scale text and image data. I completed my undergraduate studies from <a href="https://www.flickr.com/photos/112446132@N04/albums/72157639004852166" target="_blank"> IIT Guwahati </a> in 2016. </p> 
+
+<!-- <p> Even before that, I spent a year working as a data scientist at Oracle India, Bangalore. I completed my bachelors from <a href=
+	"https://www.flickr.com/photos/112446132@N04/albums/72157639004852166" target="_blank"> IIT Guwahati </a> in 2016, with a major in ECE and a minor in CSE. I did my bachelor's thesis on <i> energy harvesting in wireless networks </i>, a field that has kept me busy for long before I started pursuing deep learning. </p> -->
+<!-- </div>/.blurb -->
+
+</td>
+
+<td>
+<a href="files/photo.jpg" target="_blank"> <img src="files/photo-circle.png" alt="Tarun Kalluri" width="210" height="210"> </a>
+</td>
+
+</tr>
+</table>
+
+<p style="text-align:center">
+  <a href="mailto:sskallur@eng.ucsd.edu" target="_blank">Email</a>  /
+  <a href="files/CV/CV.pdf" target="_blank">CV</a>  / 
+  <a href="https://scholar.google.co.in/citations?user=AeraUlMAAAAJ&hl=en" target="_blank">Google Scholar</a>  /
+  <a href="https://github.com/tarun005" target="_blank">GitHub</a>  /
+  <a href="https://www.linkedin.com/in/tarun-kalluri/" target="_blank">LinkedIn</a> /
+  <a href="https://twitter.com/tarun_05" target="_blank">Twitter</a> 
+</p>
+
+<br>
+
+<heading>News</heading>
+
+<br>
+
+<br>
+
+<table>
+
+<tr> <td> <b>Sep 2020: </b> Recipient of <a href="https://ipe.ucsd.edu/"> IPE PhD fellowship </a> for the year 2020-21. </td> </tr>
+<tr> <td> <b>Aug 2020:</b>  Our paper on training neural network for molecular force predictions is accepted to the Journal of Physical Chemistry. </td> </tr>
+<tr> <td> <b>June 2020:</b>  Joined Facebook AI as a summer intern with the multimodal learning group. </td> </tr>
+<tr> <td> <b>Dec 2019:</b>  One paper on datasets for resource constrained semantic segmentation accepted to NCVPRIPG 2019. </td> </tr>
+<tr> <td> <b>Sep 2019:</b> Moved to sunny San Diego! Starting as a PhD student at CSE department in UCSD from Fall 2019. I will be working with the Visual Computing Group.</td></tr>
+<tr> <td> <b>Jul 2019:</b> Our paper on Universal Semantic Segmentation is accepted to ICCV 2019.</tr> 
+</table>
+
+<br>
+
+<heading>Publications</heading>
+
+<table >
+<!-- > bgcolor="#ffffd0" -->
+
+    <tr>
+        <td>
+          <div>
+            <a href="https://youtu.be/TcQd0LCLCzo" target="_blank"> <img src="files/thumbnails/FLAVR.png" alt="flavr_fig" width="160" height="145"> </a>
+          </div>
+        </td>
+        <td style="padding:20px;width:100%;vertical-align:middle">
+          <a href="https://arxiv.org/pdf/2012.08512.pdf">
+            <papertitle>FLAVR: Flow-Agnostic Video Representations for Fast Frame Interpolation</papertitle>
+          </a>
+          <br>
+
+          <strong> Tarun Kalluri </strong>,
+          Deepak Pathak,
+          Manmohan Chandraker, 
+          Du Tran
+
+          <br>
+          <em>arxiv</em>, 2020
+          <br>
+          <a href="https://arxiv.org/abs/2012.08512">arxiv</a> /
+      <a href="files/papers/2012.08512.pdf">pdf</a> / 
+      <a href="https://tarun005.github.io/FLAVR/">project webpage</a> /
+      <a href="https://youtu.be/TcQd0LCLCzo">video</a> /
+      <a href="Code">code </a>
+          <p></p>
+          <p>
+          Fast, accurate and flow-free video frame interpolation technique using space-time convolutions, capable of single shot multi frame prediction.
+          </p>
+        </td>
+    </tr>
+
+	  <tr>
+        <td>
+          <div>
+            <a href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Kalluri_Universal_Semi-Supervised_Semantic_Segmentation_ICCV_2019_paper.pdf" target="_blank"> <img src="files/thumbnails/USSS_ICCV19" alt="iccv_fig" width="160" height="145"> </a>
+          </div>
+        </td>
+        <td style="padding:20px;width:100%;vertical-align:middle">
+          <a href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Kalluri_Universal_Semi-Supervised_Semantic_Segmentation_ICCV_2019_paper.pdf">
+            <papertitle>Universal Semi-Supervised Semantic Segmentation</papertitle>
+          </a>
+          <br>
+
+          <strong> Tarun Kalluri </strong>,
+          Girish Varma,
+          Manmohan Chandraker, 
+          CV Jawahar
+
+          <br>
+          <em>ICCV</em>, 2019
+          <br>
+          <a href="files/papers/1811.10323.pdf">pdf</a> /
+		  <a href="files/posters/Girish_Varma_ICCV2019_Universal_SemiSupervised_Semantic_Segmentation.pdf">poster</a> / 
+		  <a href="files/reviews/iccv19.txt">reviews</a> /
+		  <a href="https://github.com/tarun005/USSS_ICCV19">code</a>
+          <p></p>
+          <p>
+          Addresses geographical disparities between semantic segmentation datasets with minimum labeling overhead from each domain.
+          </p>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+          <div>
+            <a href="https://pubs.acs.org/doi/10.1021/acs.jpca.0c03926" target="_blank"> <img src="files/thumbnails/DFT.png" alt="dft-fig" width="160" height="120"> </a>
+          </div>
+        </td>
+        <td style="padding:20px;width:100%;vertical-align:middle">
+          <a href="https://chemrxiv.org/articles/Machine_Learning_for_Accurate_Force_Calculations_in_Molecular_Dynamics_Simulations/12271289/1">
+            <papertitle>Machine Learning for Accurate Force Calculations in Molecular Dynamics Simulations</papertitle>
+          </a>
+          <br>
+
+          Punyaslok Pattnaik, Shampa Raghunathan, <strong> Tarun Kalluri </strong> , Prabhakar Bhimalapuram, C. V. Jawahar, U. Deva Priyakumar
+
+          <br>
+          <em>Jorurnal of Physical Chemistry A</em>, 2020
+          <br>
+          <a href="https://pubs.acs.org/doi/10.1021/acs.jpca.0c03926">pdf</a> /
+		  <a href="https://chemrxiv.org/articles/Machine_Learning_for_Accurate_Force_Calculations_in_Molecular_Dynamics_Simulations/12271289/1">chemRxiv</a> 
+          <p></p>
+          <p>
+          Neural network aided simulation of molecular forces making use of the data obtained using the quantummechanical density functional theory (DFT) on small systems.
+          </p>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+          <div >
+            <a href="files/papers/SS_NVCPRIPG_2019.pdf" target="_blank"> <img src="files/thumbnails/NCVPRIPG_2019.png" alt="nvcpripg_fig" width="160" height="120"> </a>
+          </div>
+        </td>
+        <td style="padding:20px;width:100%;vertical-align:middle">
+          <a href="hfiles/papers/SS_NVCPRIPG_2019.pdf">
+            <papertitle>Semantic Segmentation Datasets for Resource Constrained Training</papertitle>
+          </a>
+          <br>
+
+          Ashutosh Mishra*, 
+          Sudhir Kumar*, 
+          <strong> Tarun Kalluri* </strong>, 
+          Girish Varma, 
+          Anbumani Subramaian, 
+          Manmohan Chandraker,
+          CV Jawahar
+
+          <br>
+          <em>NCVPRIPG</em>, 2019
+          <br>
+          <a href="files/papers/SS_NVCPRIPG_2019.pdf">pdf</a> /
+		  <a href="files/posters/SS_NVCPRIPG_2019.pdf">poster</a> /
+		  <a href="files/reviews/ncvpripg.txt">reviews</a> /
+		  <a href="https://idd.insaan.iiit.ac.in/">dataset</a>
+          <p></p>
+          <p>
+          Proposes optimum model and data resampling choices for resource constrained training of semantic segmentation networks.
+          </p>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+          <div class="one">
+            <img src="files/thumbnails/TS-PSS.png" alt="tspss-fig" width="160" height="120">
+          </div>
+        </td>
+        <td style="padding:20px;width:100%;vertical-align:middle">
+          <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8352713">
+            <papertitle>Cooperative Spectrum Sharing-based Relaying Protocols with Wireless Energy Harvesting Cognitive User</papertitle>
+          </a>
+          <br>
+
+          <strong> Tarun Kalluri </strong> , 
+          Mansi Peer, 
+          Vivek Bohara, 
+          Daniel B. da Costa, 
+          Ugo S. Dias
+
+          <br>
+          <em>IET Communications</em>, 2018
+          <br>
+          <a href="https://ieeexplore.ieee.org/document/8352713">pdf</a>
+          <p></p>
+          <p>
+          Relaying protocols for energy harvesting wireless sensor networks under cooperative spectrum sharing.
+          </p>
+        </td>
+    </tr>
+
+
+<!-- <tr><td colspan="2" class="theader">2018</td></tr> -->
+
+<!-- <tr class="bibline"><td class="bibref"><a name="1"></a></td>
+
+	<td valign="top" width="30%"><img src="files/thumbnails/TS-PSS.png" alt="tspss-fig" width="250" height="200">&nbsp;</td>
+
+	<td valign="top" width="70%" class="bibitem"> <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8352713"><span class="bibtitle">Cooperative spectrum sharing-based relaying protocols with wireless energy harvesting cognitive user</span></a><br />
+	 <span class="bibauthor"> <b> Tarun Kalluri </b> , Mansi Peer, Vivek Bohara, Daniel B. da Costa, Ugo S. Dias</span><br />
+	 <span class="bibbooktitle">IET Communications</span>, 2018.<br>
+	
+	<a href="https://ieeexplore.ieee.org/document/8352713">[pdf]</a>
+
+</td></tr> -->
+
+
+</table><table class="result">
+</table> 
+
+<heading> Advisors </heading>
+
+<p> In the past, I have been extremely fortunate to have been advised by the following mentors. </p>
+
+<UL>
+<LI> <a href="https://dutran.github.io/"> Dr. Du Tran, <a href="https://www.cs.cmu.edu/~dpathak/"> Dr. Deepak Pathak </a> at Facebook AI, MPK (Summer 2020)	
+<LI> <a href="https://faculty.iiit.ac.in/~jawahar/index.html"> Dr. CV Jawahar </a> at IIIT, Hyderabad (2017-19)
+<LI> <a href="https://sites.google.com/a/iiitd.ac.in/vivek-ashok-bohara/"> Dr. Vivek Bohara </a> at IIIT, Delhi (Summer 2015), 
+<LI> <a href="https://www.iitg.ac.in/eee/tony.html"> Dr. Tony Jacob </a> at IIT, Guwahati (Bachelor thesis 2016),
+<LI> <a href="https://sites.google.com/site/prasantmisra/"> Dr. Prasant Misra </a> at RBCCPS, IISc Bengaluru (Summer 2014),
+<!-- <LI> <a href="https://www.iitg.ac.in/eee/pguha.html"> Dr. P. Guha </a> at IIT, Guwahati (Spring 2015), -->
+</UL> 
+
+  
+  <!-- <div style="text-align:right;font-size: xx-small;opacity: 0.6;" class="poweredby">Powered by <a href="http://www.monperrus.net/martin/bibtexbrowser/">bibtexbrowser</a></div> -->
+
+<heading>Talks</heading>
+
+
+<table class="result">
+<tr class="bibline"><td class="bibref"><a name="3"></a>[3]</td><td class="bibitem"> <span class="bibtitle">Domain adaptation for urban scene understanding</span></a>, <span class="bibbooktitle">Augmented Reality and Self-Driving workshop, Qualcomm San Diego, June 2020 <a href="files/slides/UrbanSceneAdaptation.pdf">[slides]</a><a href="">[abstract]</a></td></tr>
+<tr class="bibline"><td class="bibref"><a name="2"></a>[2]</td><td class="bibitem"> <span class="bibtitle">Cross Task Adaptation for semantic segmentation</span></a>, <span class="bibbooktitle">Pixel Cafe, UCSD, May 2020 </td></tr>
+<tr class="bibline"><td class="bibref"><a name="1"></a>[1]</td><td class="bibitem"> <span class="bibtitle">Universal Semi-supervised Semantic Segmentation</span></a>, <span class="bibbooktitle">Pixel Cafe, UCSD, Nov 2019 <a href="files/slides/USSS_PixelCafe.pdf">[slides]</a> </td></tr>
+</table> 
+
+
+			</div>
+		</div>
+	</div>
+
+<table width="100%" align="center" border="0" cellspacing="0" cellpadding="2">
+    <tr><td><br><p align="right"><font size="1.5">
+    Template modified from <a href="https://jonbarron.info/" class="ack"> Jon Barron </a> and <a href="http://stanford.edu/~mhahn2/cgi-bin/" class="ack">  Micheal Hahn </a>
+    </font></p></td></tr>
+</table>
+
+</body></html>
+
+
