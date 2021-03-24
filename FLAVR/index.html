@@ -120,7 +120,7 @@
                             A flow-free and single-shot prediction approach for video frame interpolation. 
                         </li>
                         <li>
-                            384x faster than the current most accurate approach and 23x faster than the current fastest on 8x interpolation.
+                            Uses 3D convolutions to capture motion trajectories.
                         </li>
                     </ul>
                 <p></p>
@@ -236,7 +236,7 @@
 
                 To overcome these limitations, we propose a flexible and efficient architecture that makes use of 3D space-time convolutions to enable end to end learning and inference for the task of video frame interpolation. Our method efficiently learns to reason about non-linear motions, complex occlusions and temporal abstractions resulting in improved performance on video interpolation, while requiring no additional inputs in the form of optical flow or depth maps. <br> <br>
 
-                <img src="FLAVR_files/plot.png" alt="overview" width="320" height="240" class="center"> <br>
+                <!-- <img src="FLAVR_files/plot.png" alt="overview" width="320" height="240" class="center"> <br> -->
 
                 Due to its simplicity, our proposed method improves the inference speed by 384x compared to the current most accurate method and 23x compared to the current fastest on 8x interpolation. In addition, we evaluate our model on a wide range of challenging settings and consistently demonstrate superior qualitative and quantitative results compared with current methods on various popular benchmarks including Vimeo-90K, UCF101, DAVIS, Adobe, and GoPro. Finally, we demonstrate that video frame interpolation can serve as a useful self-supervised pretext task for action recognition, optical flow estimation, and motion magnification.
                 </p>
