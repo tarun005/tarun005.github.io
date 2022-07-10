@@ -52,9 +52,9 @@
           <h1 class="title is-1 publication-title">MemSAC: Memory Augmented Sample Consistency for Many-Class Domain Adaptation</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://tarun005.github.io/">Tarun Kalluri</a>,</span>
+              <a href="https://tarun005.github.io/">Tarun Kalluri</a>, </span>
               <span class="author-block">
-                <a href="https://www.linkedin.com/in/astutisharma/">Astuti Sharma</a></span>
+                <a href="https://www.linkedin.com/in/astutisharma/">Astuti Sharma, </a></span>
             <span class="author-block">
               <a href="https://cseweb.ucsd.edu//~mkchandraker/">Manmohan Chandraker</a></span>
           </div>
@@ -156,25 +156,11 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We present the first method capable of estimating the category-level 
-            6D object pose for in-the-wild data without using any annotations of
-            real-world data.
+            We present a consistency based domain adaptation method particularly suited for 
+              large scale adaptation datasets.
           </p>
           <p>
-            6D object pose estimation is one of the fundamental problem in computer vision 
-            and robotics research. While a lot of recent efforts have been made on 
-            generalizing pose estimation to novel object instances within the same category, 
-            namely category-level 6D pose estimation, it is still restricted in constrained 
-            environments given limited number of annotated data. In this paper, we collect 
-            <i>Wild6D</i>, a new unlabeled RGBD object video dataset with diverse instances and 
-            backgrounds. We utilize this data to generalize 6D object pose estimation in 
-            the wild with semi-supervised learning. We propose a novel model, 
-            called  <strong>Re</strong>ndering for <strong>Po</strong>se estimation network 
-            (<strong>RePoNet</strong>), that is jointly trained using the free ground-truths with the synthetic data, 
-            and a self-supervised objective on the real-world data. Without using any 3D 
-            annotations on real data, our method outperforms state-of-the-art methods 
-            on previous datasets and our Wild6D test set (with manual annotations for evaluation) 
-            by a large margin.
+            Practical real world datasets with plentiful categories introduce additional challenges for unsupervised domain adaptation like small inter-class discriminability, that existing approaches relying only on domain invariance cannot handle sufficiently well. In this work we propose MemSAC, which exploits sample level similarity across source and target domains to achieve discriminative transfer, along with architectures that scale to a large number of categories. For this purpose, we first introduce a memory augmented approach to efficiently extract pairwise similarity relations between labeled source and unlabeled target domain instances, suited to handle an arbitrary number of classes. Next, we propose and theoretically justify a novel variant of the contrastive loss to promote local consistency among within-class cross domain samples while enforcing separation between classes, thus preserving discriminative transfer from source to target. We validate the advantages of MemSAC with significant improvements over previous state-of-the-art on multiple challenging transfer tasks designed for large-scale adaptation, such as DomainNet with 345 classes and fine-grained adaptation on Caltech-UCSD birds dataset with 200 classes.
           </p>
         </div>
       </div>
