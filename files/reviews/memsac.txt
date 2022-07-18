@@ -1,0 +1,125 @@
+################################################################
+## Reviewer 1
+################################################################
+################################################################
+
+    2. Summarize the paper’s claimed primary contributions: In 5-7 sentences, describe the key ideas, results, findings, and significance as claimed by the paper’s authors.
+        This paper proposed a new method (MemSAC) for unsupervised domain adaptation. Based on the observation that existing UDA methods do not perform well when the number of classes increases, MemSAC exploits the sample-level similarity. That is, for each target data, the k-nearest neighbors are found within the memory bank of source data features, then the contrastive loss is added to pull the embeddings together. The proposed loss is added on top of the CDAN method. Extensive experiments on DomainNet-345 and CUB-Drawings show great improvements over existing methods.
+    3. What do you see as the main strengths of this work? Consider, among others, the significance of critical ideas, validation, writing quality, and data contribution. Explain clearly why these aspects of the paper are valuable. ACs are instructed to ignore unsupported responses.
+        - The proposed method is reasonable and effective.
+        - This paper provides observations on how the existing method performs, intuitions on the proposed method, and theoretical support.
+        - The method can be applied to different UDA methods and shows improvements.
+        - The experiments are extensive. Detailed ablation studies, results on different hierarchies of the class labels are provided.
+        - The results are impressive compared to the state-of-the-art.
+        - The writing is easy to understand.
+    4. What do you see as the main weaknesses of this work? Clearly explain why these are weak aspects of the paper, e.g., why a specific prior work has already demonstrated the key contributions, why the experiments are insufficient to validate the claims, etc. ACs are instructed to ignore unsupported responses.
+        - L.71 “the limitations… due to lower inter-class separation and a greater possibility of negative transfer” – Is there any proof to support this claim?
+        - About the claim of using KNN-based Pseudo-labeling: “such approach is less sensitive to noisy classifier boundaries” (L.276) – In my opinion, the proposed method is using KNN (where k=5) to get pseudo-labels for target data, then pulls those embeddings together. It is still sensitive to the noisy classifier (KNN). I would argue that KNN might be even noisier than a neural network classifier. If the K nearest neighbors (pseudo-labels) are wrong, the representations are pulled together incorrectly.
+        - On why MemSAC works (L. 513): ”... encourages tighter clustering … bring within-class samples closer to each other” – If this is the case, then pseudo-labeling should also work. PL typically uses linear/NN classifier + cross-entropy loss while the proposed method uses K-NN + contrastive loss. Are there more insights on why the proposed method works better?
+        - It looks to me that the benefit of the proposed method mainly comes from the use of KNN, especially when the task is harder (larger number of classes or more fine-grained classes). For example, on OfficeHome the gain of using the proposed method is slightly less. It would be interesting to see more analysis on this.
+        - Is the proposed method sensitive to K? Does K need to be different depending on the dataset? It would be good to see a plot of accuracy vs K.
+    6. [Rate the paper as it stands now (pre-rebuttal). Borderline will not be an option for your final post-rebuttal recommendation, and so it should only be used rarely now.]
+        Weak Accept
+    7. Justify your rating. Be specific: What are the most critical factors in your rating? What points should the authors cover in their rebuttal? Your reply should clearly explain to the authors what you need to see in order to increase your rating.
+        Overall, this paper proposed a method on UDA which is reasonable and effective. The experiments are also very extensive with detailed ablations. My only suggestion is that there could be more analysis on why the proposed method performs better.
+    11. Justify your post-rebuttal assessment. Acknowledge any rebuttal and be specific about the final factors for and against acceptance that matter to you. (Will be visible to authors after author notification)
+        The proposed method is effective on DA benchmarks when the number of classes is large. The authors further provided more ablation studies on the design choices of k-NN over classifier and the memory bank. However, one thing I forgot to mention in the original review is that the proposed method is very similar to PAWS [1], which also compares instance similarity and uses k-NN to get pseudo labels and uses a memory bank. There are also similar ideas in the literature of self-/semi-supervised learning. Hence, I would keep my original rating, but I encourage authors to include related works in self-/semi-supervised learning literature, especially a discussion with [1].
+
+        [1] Semi-Supervised Learning of Visual Features by Non-Parametrically Predicting View Assignments with Support Samples, Assran et al., ICCV 20221.
+    12. Give your final rating for this paper. Don't worry about poster vs oral. Consider the input from all reviewers, the authors' feedback, and any discussion. (Will be visible to authors after author notification)
+        Weak Accept. I tend to vote for accepting this submission, but rejecting it would not be that bad.
+
+################################################################
+## Reviewer 2
+################################################################
+################################################################
+
+
+ 2. Summarize the paper’s claimed primary contributions: In 5-7 sentences, describe the key ideas, results, findings, and significance as claimed by the paper’s authors.
+
+    This paper proposes an unsupervised domain adaptation network which applies a memory-bank storing labeled past features from source domain to calculate pairwise similarity, and it is then optimized by a corss-domain consistency loss. It outperforms many prior SOTA approaches on datasets with larger number of classes and thus demonstrating its scalability.
+
+3. What do you see as the main strengths of this work? Consider, among others, the significance of critical ideas, validation, writing quality, and data contribution. Explain clearly why these aspects of the paper are valuable. ACs are instructed to ignore unsupported responses.
+
+    This paper suitably adapts from contrastive learning literatures and proposes a consistency loss with theoretical support to some extent. It also provides a sound approach to initialize the memory bank. Besides accuracies, Table 3c also shows other aspects such as memory and time, which are also important factors in my opinion. The supplementary also provides experiment results that I am interested.
+
+4. What do you see as the main weaknesses of this work? Clearly explain why these are weak aspects of the paper, e.g., why a specific prior work has already demonstrated the key contributions, why the experiments are insufficient to validate the claims, etc. ACs are instructed to ignore unsupported responses.
+
+    From my perspective, the key success of the proposed method is the use of memory bank. However, 1) it seems brutal-force to me and increasing M leads to predictable improvement. Can you provide more details besides Fig 6 to compare your proposed method with others similar to Table 1 (but smaller scale), with M equal to batch size (not remembering) so that we can better evaluate the memory bank and consistency loss separately, or other forms of ablation study regarding this issue? 2) Although Fig 6 suggests larger M, which is even much larger than number of total samples N, improves performance, little theoretical analysis is provided (and I anticipated this being included in 3.3). Why can it be further improved when M > N? This question intuitively comes out as copies of the dataset only contain redundant information. Does the different sizes of source and target dataset affect the choice of M? Will it work well on worse datasets such as an imbalanced/long-tailed one?
+
+    Other weaknesses in my opinion are just lack of further experiments: 1) This paper claims its method performs better too on fine-grained tasks, but only CUB settings are studied, so we need to see more results on other fine-grained dataset(s). 2) Table 3 needs more domain adaptation settings, R and C in DomainNet are easier domains to learn and have generally better results, so we would like to see other settings or even other benchmarks, but this is less prioritized.
+
+5. Reproducibility: Could the work be reproduced by a talented graduate student from the information in the paper?
+
+    Agreement accepted
+
+6. [Rate the paper as it stands now (pre-rebuttal). Borderline will not be an option for your final post-rebuttal recommendation, and so it should only be used rarely now.]
+
+    Borderline
+
+7. Justify your rating. Be specific: What are the most critical factors in your rating? What points should the authors cover in their rebuttal? Your reply should clearly explain to the authors what you need to see in order to increase your rating.
+
+    This paper is well-written and extends previous work with solid performance, so it is a successful application. However, as I mentioned in weakness, less is studied for its core concept. I hope I can learn more about the reasons behind the addressed observations in experiment as well as more results supporting the generalizability of this method in the rebuttal.
+
+11. Justify your post-rebuttal assessment. Acknowledge any rebuttal and be specific about the final factors for and against acceptance that matter to you. (Will be visible to authors after author notification)
+
+    The authors wrote a reasonbale response to my reviews with additional results and explanations which solves most of my confusions. To me, the empirical results are good, and the motivations are reasonable, so I will change my initial score to weak accept.
+
+12. Give your final rating for this paper. Don't worry about poster vs oral. Consider the input from all reviewers, the authors' feedback, and any discussion. (Will be visible to authors after author notification)
+
+
+    Weak Accept. I tend to vote for accepting this submission, but rejecting it would not be that bad.
+
+
+################################################################
+## Reviewer 3
+################################################################
+################################################################
+
+
+ 2. Summarize the paper’s claimed primary contributions: In 5-7 sentences, describe the key ideas, results, findings, and significance as claimed by the paper’s authors.
+
+    This paper stresses a many-class domain adaptation problem that scales to a large number of categories in domain adaptation. The proposed method, named MemSAC, includes two main components: cross domain consistency enforces closer 
+clustering of same category samples across source and target domains and a memory-based mechanism addresses the lack of representation for all classes in a mini-batch. Extensive experiments and ablation studies have been performed on two challenging domain adaptation benchmarks: DomainNet and CUB200.
+
+3. What do you see as the main strengths of this work? Consider, among others, the significance of critical ideas, validation, writing quality, and data contribution. Explain clearly why these aspects of the paper are valuable. ACs are instructed to ignore unsupported responses.
+
+    This paper addresses a novel and challenging domain adaptation scenario with large amounts of categories, where existing SOTA domain adaptation methods usually fail to cope.
+
+    The proposed cross domain consistency and memory-based mechanism are sample and meaningful. Extensive experiments have demonstrated the effectiveness of the proposed MemSAC with achieving SOTA performance in the challenging benchmark DomainNet and fine-grained CUB200.
+
+    The paper is well originated and easy to follow.
+
+4. What do you see as the main weaknesses of this work? Clearly explain why these are weak aspects of the paper, e.g., why a specific prior work has already demonstrated the key contributions, why the experiments are insufficient to validate the claims, etc. ACs are instructed to ignore unsupported responses.
+
+    The main contribution of this paper is to enforce closer clustering of the same category samples across the source and target domains and introduces kNN-based pseudo labeling and memory augmented similarity extraction techniques to solve problems of noise pseudo labels and limited categories in a mini-batch. The proposed method is straightforward and makes sense for learning discriminative features. However, it is not convincing to tackle the domain shift problem. The major concerns are as follows.
+
+    1) The main contribution of cross domain consistency loss is modified from supervised contrastive learning [1], which lacks technique sontribution.
+
+    2) The large-scale categories classification solved in this paper is extremely challenging, but whether it is the essential problem of domain adaptation is still open to question. In my opinion, the core issue of domain adaptation is to eliminate domain discrepancy, but the proposed method focuses on learning a discriminative feature representation. Even though the proposed MemSAC performs a significant improvement, the gain may come from the powerful classifier. Can you provide the source-only results with the proposed MemSAC technique?
+
+    3) The proposed results reveal that the proposed method seems not generalizable to standard domain adaptation benchmarks. Although it provides a significant improvement in DomainNet dataset, the performance gain cannot generalized to OfficeHome dataset according to the results in Supplementary Material. What about the other adaptation gains in more popular datasets VisDA and Office31?
+
+
+    [1] Khosla P, Teterwak P, Wang C, et al. Supervised contrastive learning[J]. Advances in Neural Information Processing Systems, 2020, 33: 18661-18673.
+
+5. Reproducibility: Could the work be reproduced by a talented graduate student from the information in the paper?
+
+    Agreement accepted
+
+6. [Rate the paper as it stands now (pre-rebuttal). Borderline will not be an option for your final post-rebuttal recommendation, and so it should only be used rarely now.]
+
+    Weak Reject
+
+7. Justify your rating. Be specific: What are the most critical factors in your rating? What points should the authors cover in their rebuttal? Your reply should clearly explain to the authors what you need to see in order to increase your rating.
+
+    This paper addresses a challenging domain adaptation problem with large amounts of categories. But the proposed method can not generalized to the standard benchmarks and the proposed method is modified from existing works with high similarity.
+
+11. Justify your post-rebuttal assessment. Acknowledge any rebuttal and be specific about the final factors for and against acceptance that matter to you. (Will be visible to authors after author notification)
+
+    The authors solve my concerns during rebutall and I vote to acceptance for this paper.
+
+12. Give your final rating for this paper. Don't worry about poster vs oral. Consider the input from all reviewers, the authors' feedback, and any discussion. (Will be visible to authors after author notification)
+
+    Weak Accept. I tend to vote for accepting this submission, but rejecting it would not be that bad.
+
