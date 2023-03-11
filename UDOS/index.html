@@ -241,7 +241,7 @@
           </p>
             
           <p>
-          Put in words, given a set of part-masks along with their pairwise affinity scores, our clustering algorithm is employed to produce a partition of the masks that maximizes the average affinities within each resulting partition. Our refinement modules then further refines the merged masks along with predicting an objectness score for each of the predicted proposals. Now, equipped with a richer supervision and effective modules for clustering and refining part-masks, UDOS is much better at predicting both seen and unseen objects during test-time. 
+          Put in words, given a set of part-masks along with their pairwise affinity scores, our clustering algorithm is employed to produce a partition of the masks that maximizes the average affinities within each resulting partition. So all the parts of body might be merged into a single person mask, the legs and body of a chair might be merged into a single mask for chair and soon. Our refinement modules then further refines the merged masks along with predicting an objectness score for each of the predicted proposals. Now, equipped with a richer supervision and effective modules for clustering and refining part-masks, UDOS is much better at predicting both seen and unseen objects during test-time. 
           <figure>
             <img src="static/images/intro_pic_udos.png" width=350 class="center"> 
             <figcaption>UDOS efficiently detects many unseen classes in open world when trained only using VOC-categories from COCO, while adding negligible inference time overhead</figcaption>
