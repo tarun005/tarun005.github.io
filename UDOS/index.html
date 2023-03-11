@@ -134,15 +134,48 @@
   </div>
 </section>
 
-<section class="hero teaser">
+<!-- <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
       <img src="static/images/UDOS_IntroPic.png">
-      <!-- <h2 class="subtitle has-text-centered" style="margin-top: 15px">
-        Our collected Wild6D dataset consists of a large number of object-centric RGBD videos.
-      </h2> -->
+      <p>
+        Comparison of standard Mask-RCNN, MCG and UDOS for open-world instance segmentation. While standard top-down architectures like MaskRCNN suffer from seen-class bias leading to several missed objects, bottom-up methods result in noisy over-segmentation. UDOS combines the best of both these approaches by using bottom-up proposals as weak supervision inside top-down architectures.
+      </p>
     </div>
 
+  </div>
+</section> -->
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds"> 
+        <!-- <h2 class="title is-3">UDOS for open-world instance segmentation/h2> -->
+        <div class="content has-text-justified">
+
+          <p>
+            <b>Got just a few seconds? here's a tl;dr!</b>: We present <b>UDOS</b> for instance segmentation in an open-world by leveraging weak-supervision from unsupervised bottom-up segmentation algorithm like selective search to first predict part masks corresponding to objects, followed by affinity-based grouping and refinement modules to predict full-instance masks for both seen and unseen objects in an image. We achieve significantly better results compared to existing SOTA on open-world instance segmentation on several datasets!
+          </p>
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds"> 
+        <h2 class="title is-3">Visualization of segmentations for model trained only on VOC classes</h2>
+        <div class="content has-text-justified">
+          <strong></strong> Comparing between classical MaskRCNN training and UDOS, we note that many classes like {jug, tissue papers, tie, eyeglasses}, {knife, cutting board, vegetables, glass}, {shoes, helmet, gloves}, {ostrich} and {dishwasher, faucet} among others which are not part of VOC-classes are missed by standard Mask-RCNN training, but detected using UDOS. 
+          The third row shows predictions made <i>only</i> by UDOS and missed by Mask-RCNN.
+        </div>
+        <img src="static/images/QualtResults.png" width=850> 
+      </div>
+    </div>
   </div>
 </section>
 
@@ -168,10 +201,66 @@
 </div>
 </div> -->
 
-
 <section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds"> 
+        <h2 class="title is-3">UDOS overview</h2>
+        <div class="content has-text-justified">
+          <p>
+            <b>What is Open-world Instance Segmentation (OWIS)?</b> Open-world instance segmentation is the problem of predicting object masks for both seen (annotated) and unseen (unannotated) object classes in an image. For example, MS-COCO only has mask annotation for 80 object categories, but at test-time we need to predict masks for objects beyond these 80 categories. 
+          </p>
+            
+          <p>
+            <b>What's wrong with Mask-RCNN?</b> Nothing much. But, instance segmentation frameworks such as Mask R-CNN often couple recognition and segmentation too closely to the extent that they are unable to segment out objects not labeled in the training data. This problem is exacerbated when these frameworks are trained with non-exhaustive annotations like MS-COCO, where out-of-taxonomy objects are perceived as negatives (background). A prediction made on these objects are punished by the top-down supervision. For example, in this picture, many classes like hat, plates and paper are missed because they are not part of VOC taxonomy. 
+            <figure>
+              <img src="static/images/intro_pic_mrcnn.png" width=350 class="center"> 
+              <figcaption>Missed open-world objects using MaskRCNN.</figcaption>
+            </figure>
+            
+          </p>
+
+          <p>
+            <b>What does UDOS do?</b> We make two key contributions in UDOS. First, we observe that unsupervised bottom-up segmentation algorithms such as Selective Search, which have been <i>de-facto</i> method for proposal generation before the tsumani called deep learning, are inherently class-agnostic and perfectly suitable for the problem of open-world detection. They provide far more <i> coverage</i> (in terms of objects) in the image since they only rely on low-level cues such as shape, size, color, texture and brightness between pixels to generate candidate object masks. So we generate candidate object masks for all images in MS-COCO and add these as augmented supervision to train the top-down network, in addition to the already available annotated masks for a subset of object.
+          </p>
+          <figure>
+            <img src="static/images/problemFig.png" width=850> 
+            <figcaption>UDOS pipeline consisting of part-mask prediction, grouping and refinement modules.</figcaption>
+          </figure>
+
+          <p>
+            <b> So can this solve the problem? </b> Not quite. Looking again at the figure above, these proposal generation methods (MCG here) are unsupervised (which is good because it has no class-bias) but they are also prone to over-segmentation (which is bad since they can only predict <i>parts</i> of object and not full objects - like head, torso and hands separately instead of person as a whole). 
+            <figure>
+              <img src="static/images/intro_pic_mcg.png" width=350 class="center"> 
+              <figcaption>Bottom-up segmentation methods generally result in noisy over-segmentations.</figcaption>
+            </figure>
+            
+            So our second contribution is to design a grouping method and a refinement module to cluster these part masks into larger <i>object</i> masks corresponding to the objects. The grouping module is based on agglomerative clustering the part-masks based on pairwise affinities, to solve the following objective.
+            <img src="static/images/agg_clust.png" width=350 class="center"> 
+          </p>
+            
+          <p>
+          Put in words, given a set of part-masks along with their pairwise affinity scores, our clustering algorithm is employed to produce a partition of the masks that maximizes the average affinities within each resulting partition. Our refinement modules then further refines the merged masks along with predicting an objectness score for each of the predicted proposals. Now, equipped with a richer supervision and effective modules for clustering and refining part-masks, UDOS is much better at predicting both seen and unseen objects during test-time. 
+          <figure>
+            <img src="static/images/intro_pic_udos.png" width=350 class="center"> 
+            <figcaption>UDOS efficiently detects many unseen classes in open world when trained only using VOC-categories from COCO, while adding negligible inference time overhead</figcaption>
+          </figure>
+            </p>
+
+          <p>
+            <b>How does UDOS compare to SOTA?</b> UDOS much better than several SOTA methods for OWIS, like OLN, LDET and GGN. It beats GGN by 3% Box-AR100 and 2% Mask-AR100 on the competetive setting of VOC to NonVOC transfer from COCO dataset. On cross-dataset setting, UDOS performs much better than previous works on several datasets like UVO, ADE20K and OpenImages. Please refer to our <a href="https://arxiv.org/abs/2303.05503">paper</a> for additional ablations and qualitative results!
+          </p>
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- <section class="section">
   <div class="container is-max-desktop">
-    <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
@@ -186,41 +275,9 @@
           </p>
         </div>
       </div>
-    </div>
-    <!--/ Abstract. -->
+    </div> -->
 
     <!-- <div class="hr"></div> -->
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-two-thirds"> 
-        <h2 class="title is-3">Visualization of segmentations for model trained only on VOC classes</h2>
-        <div class="content has-text-justified">
-          <strong></strong> Comparing between classical MaskRCNN training and UDOS, we note that many classes like {jug, tissue papers, tie, eyeglasses}, {knife, cutting board, vegetables, glass}, {shoes, helmet, gloves}, {ostrich} and {dishwasher, faucet} among others which are not part of VOC-classes are missed by standard Mask-RCNN training, but detected using UDOS. 
-          The third row shows predictions made <i>only</i> by UDOS and missed by Mask-RCNN.
-        </div>
-        <img src="static/images/QualtResults.png" width=850> 
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-two-thirds"> 
-        <h2 class="title is-3">UDOS Overview</h2>
-        <div class="content has-text-justified">
-          <p> 
-            During training, we first augment the ground-truth annotations on seen classes (S) with masks provided by the unsupervised segmentation algorithm (U) and use it to supervise the part mask prediction head in (a). As these predictions might only correspond to part-segments on unknown classes (head of the horse, body of the dog), we use an affinity based grouping strategy in (b) that merges part segments corresponding to the same underlying instance. We then use a refinement head in (c) to output the final prediction that correspond to whole instances.
-          </p>
-        </div>
-        <img src="static/images/problemFig.png" width=850> 
-      </div>
-    </div>
   </div>
 </section>
 
