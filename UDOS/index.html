@@ -154,7 +154,7 @@
         <div class="content has-text-justified">
 
           <p>
-            <b>Got only a few seconds? here's a tl;dr!</b>: We present <b>UDOS</b> for instance segmentation in an open-world by leveraging weak-supervision from unsupervised bottom-up segmentation algorithm like selective search to first predict part masks corresponding to objects, followed by affinity-based grouping and refinement modules to predict full-instance masks for both seen and unseen objects in an image. We achieve significantly better results compared to existing SOTA on open-world instance segmentation on several datasets!
+            <b>Got only a few seconds? here's a tl;dr!</b>: We present <b>UDOS</b> for instance segmentation in an open-world by leveraging weak-supervision from unsupervised bottom-up segmentation algorithm like selective search. We first predict part masks corresponding to objects, followed by affinity-based grouping and refinement modules to predict full-instance masks for both seen and unseen objects in an image. We achieve significantly better results compared to existing SOTA on open-world instance segmentation on several datasets!
           </p>
 
         </div>
@@ -209,7 +209,7 @@
         <h2 class="title is-3">UDOS overview</h2>
         <div class="content has-text-justified">
           <p>
-            <b>What is Open-world Instance Segmentation (OWIS)?</b> Open-world instance segmentation is the problem of predicting object masks for both seen (annotated) and unseen (unannotated) object classes in an image. For example, MS-COCO only has mask annotation for 80 object categories, but at test-time we need to predict masks for objects beyond these 80 categories. 
+            <b>What is Open-world Instance Segmentation (OWIS)?</b> In OWIS, we need to detect and predict object masks for both seen (annotated) and unseen (unannotated) object classes in an image. For example, MS-COCO only has mask annotation for 80 object categories, but at test-time we need to predict masks for objects beyond these 80 categories. Efficient open-world models significantly improve the performance of real-world deployment of visual perception systems.
           </p>
             
           <p>
