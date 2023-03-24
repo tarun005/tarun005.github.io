@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="GeoNet: Benchmarking Unsupervised Adaptation across Geographies.">
+  <meta name="keywords" content="Generalization, Adaptation, Robustness, Fairness, Geographical bias">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GeoNet</title>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <!-- <script type="text/javascript"
+            src="//code.jquery.com/jquery-1.9.1.js">
+</script>
+    <link rel="stylesheet"
+        type="text/css"
+        href="/css/result-light.css">
+    <script type="text/javascript"
+            src=
+"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js">
+</script>
+    <link rel="stylesheet"
+        type="text/css"
+        href=
+"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet"
+        type="text/css"
+        href=
+"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title" style="font-size:38px"> GeoNet: Benchmarking Unsupervised Adaptation across Geographies </h1>
+          <h2 class="title is-4">CVPR 2023</h2>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://tarun005.github.io/">Tarun Kalluri,</a> </span>
+              <span class="author-block">
+                <a href="">Wangdong Xu, </a></span>
+            <span class="author-block">
+              <a href="https://cseweb.ucsd.edu//~mkchandraker/">Manmohan Chandraker, </a></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">UC San Diego</span>
+          </div>
+          <!-- <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>,</span>
+          </div> -->
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="../files/papers/GeoNet.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=pYvig8rL_1s"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/ViLab-UCSD/GeoNet"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span> Code (Coming Soon!) </span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fa fa-database"></i>
+                  </span>
+                  <span>Dataset</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds"> 
+        <!-- <h2 class="title is-3">UDOS for open-world instance segmentation/h2> -->
+        <div class="content has-text-justified">
+
+          <p>
+            <b>tl;dr!</b>: Computer vision models transfer poorly across geographies, and suffer significant drop in accuracy when trained on dominant geographies like US/UK and tested on under-represented geographies like Asia/Africa. We introduce a new large-scale dataset, called GeoNet, to study this problem of geographical robustness, covering vision tasks like place recognition and object classification. We forumate types of shifts typical to the problem of geographical transfer such as context, design and prior shifts, and highlight the limitation of many current unsupervised adaptation methods to bridge these domain gaps. We also show that several large-scale pretraining methods and large vision models do not suffice in providing geographical robustness when fine-tuned on geographically biased datasets.
+          </p>
+          <figure>
+            <img src="static/images/intro_map.png" width=650> 
+            <figcaption>While modern computer vision models yield human-level accuracies when trained and tested on the images from the same geographical domain, the accuracy drops significantly when presented with images from different geographies. Here, images belonging to <tt>mailbox</tt> and <tt>running track</tt> are misclassified due to design and context shifts between the domains induced by disparate geographies.</figcaption>
+          </figure>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds"> 
+        <div class="content has-text-justified">
+        <figure>
+          <img src="static/images/intro_map.png" width=850> 
+          <figcaption>While modern computer vision models yield human-level accuracies when trained and tested on the images from the same geographical domain, the accuracy drops significantly when presented with images from different geographies. Here, images belonging to <tt>mailbox</tt> and <tt>running track</tt> are misclassified due to design and context shifts between the domains induced by disparate geographies.</figcaption>
+        </figure>
+      </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section class="hero is-small" >
+  <div class="hero-body" style="padding-top: unset" >
+    <div class="container" >
+      <h2 class="title is-3" align="center">Geographic Disparity Between Domains</h2>
+      <div id="results-carousel" class="carousel results-carousel" >
+      <div class="column is-centered has-text-centered" >
+        <img src="static/images/GeoPlaces_67.png" alt="online rabbit" width=1050 />
+      </div>
+      <div class="column is-centered has-text-centered" >
+        <img src="static/images/GeoPlaces_9.png" alt="online rabbit" width=1050 />
+      </div>
+      <div class="column is-centered has-text-centered" >
+        <img src="static/images/GeoPlaces_37.png" alt="online rabbit" width=1050 />
+      </div>
+      <div class="column is-centered has-text-centered" >
+        <img src="static/images/GeoPlaces_53.png" alt="online rabbit" width=1050 />
+      </div>
+      <div class="column is-centered has-text-centered" >
+        <img src="static/images/GeoPlaces_86.png" alt="online rabbit" width=1050 />
+      </div>
+      <div class="column is-centered has-text-centered" >
+        <img src="static/images/GeoPlaces_109.png" alt="online rabbit" width=1050 />
+      </div>
+      <div class="column is-centered has-text-centered" >
+        <img src="static/images/GeoPlaces_140.png" alt="online rabbit" width=1050 />
+      </div>
+      <div class="column is-centered has-text-centered" >
+        <img src="static/images/GeoPlaces_146.png" alt="online rabbit" width=1050 />
+      </div>
+      <div class="column is-centered has-text-centered" >
+        <img src="static/images/GeoImnet_545.png" alt="online rabbit" width=1050 />
+      </div>
+      <div class="column is-centered has-text-centered" >
+        <img src="static/images/GeoImnet_573.png" alt="online rabbit" width=1050 />
+      </div>
+      <div class="column is-centered has-text-centered" >
+        <img src="static/images/GeoImnet_508.png" alt="online rabbit" width=1050 />
+      </div>
+      <div class="column is-centered has-text-centered" >
+        <img src="static/images/GeoImnet_453.png" alt="online rabbit" width=1050 />
+      </div>
+      <div class="column is-centered has-text-centered" >
+        <img src="static/images/GeoImnet_64.png" alt="online rabbit" width=1050 />
+      </div>
+      <div class="column is-centered has-text-centered" >
+        <img src="static/images/GeoImnet_193.png" alt="online rabbit" width=1050 />
+      </div>
+      <div class="column is-centered has-text-centered" >
+        <img src="static/images/GeoImnet_597.png" alt="online rabbit" width=1050 />
+      </div>
+      <div class="column is-centered has-text-centered" >
+        <img src="static/images/GeoImnet_438.png" alt="online rabbit" width=1050 />
+      </div>
+      <div class="column is-centered has-text-centered" >
+        <img src="static/images/GeoImnet_400.png" alt="online rabbit" width=1050 />
+      </div>
+</div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds"> 
+        <h2 class="title is-3">Overview of GeoNet dataset</h2>
+        <div class="content has-text-justified">
+          <p style="color:brown;" align="center">
+            <i>If you want to skip the description and directly access the dataset, you can download it <a href="">here.</a> </i> 
+          </p>
+          <br>
+
+          <p>
+            <b>What is GeoNet?</b> To facilitate robustness studies across geographies and to help design geographically transferable models, we introduce a new large-scale dataset curated from existing datasets by selecting images which belong to USA and Asia and separating them into two different domains. GeoNet contains benchmarks for two tasks:
+            <ul>
+              <li> GeoPlaces for place recognition with images curated from Places-205 and YFCC-100M. </li>
+              <li> GeoImnet for image classification with images collected from WebVision Dataset.</li>
+            </ul>
+            Additionally, GeoNet also contains benchmark for universal domain adaptation called GeoUniDA to evaluate adaptation and transfer with private source and target classes. A complete concept and data curation pipeline is presented in our paper. 
+          </p>
+
+          <p>
+            <b>How is GeoNet different from other datasets?</b> While several datasets already exist to study domain adaptation such as Office-31, OfficeHome and DomainNet, they are generally restricted to few narrow notions of domain shifts in style and appearance, while GeoNet is the first large-scale dataset proposed to study shifts caused by change in geographies. Another key distinguishing factor of GeoNet is that it is the largest available dataset for domain adaptation in terms of number of categories and images, summarized in the table below.
+            <figure>
+              <img src="static/images/geonet_stats.png" width=300> 
+              <figcaption><b>Summary of GeoNet:</b> Number of images in train and test splits in each of our benchmarks.</figcaption>
+            </figure>
+            Since all our images are sourced from Flickr, we also provide additional metadata associated with image such as latitude and longitude coordinates, hashtags and captions to facilitate design of adaptation algorithms that leverage multimodal supervision. 
+          </p>
+
+          <p>
+            <b>How is the problem of geographic adaptation different?</b> The fundamental idea of unsupervised domain adaptation, which is to enable model transfer across domains with different data distributions and different available supervision holds for geographical adaptation as well. However, the classic covariate shift assumption which assumes uniform domain discrepency across all the images does not hold anymore for geographic adaptation due to the diverse source of variations. Under some reasonable assumptions, we formulate the joint image-label distribution P(x,y) as follows.
+            <figure>
+              <img src="static/images/joint_dist.png" width=400> 
+            </figure>
+            Therefore, the shifts between domains can arise from differences in any of the context (background in an image), design (make or design of the foreground) or the prior (label distribution of images) differences across domains. In our <a href="">paper</a>, we show some examples on how these shifts manifest in our dataset.
+          </p>
+
+          <p>
+            <b>How significant are these cross-domain performance drops? </b> We illustrate the severity of domain differences across geographies and the resulting accuracy drops below by training a ResNet-50 model on training images from one domain and testing on both within-domain and cross-domain test sets. On both GeoPlaces and GeoImnet benchmarks, we observe significant cross-domain accuracy differences, a large portion of which can be attributable to ge-disparity between the test sets.
+            <figure>
+              <img src="static/images/cross_domain_gaps.png" width=500> 
+              <figcaption>
+                Top-1/Top-5 accuracies of Resnet-50 models across geographically different train and test domains. Note the significant drop in accuracies caused by the geographical domain shifts in each setting.
+              </figcaption>
+            </figure>
+            
+          </p>
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds"> 
+        <h2 class="title is-3">Benchmarking SOTA methods on GeoNet</h2>
+        <div class="content has-text-justified">
+          <p>
+            <b>Do current adaptation methods help to address these drops?</b> Since most previous SOTA UDA methods work with the aforementioned uniform covariate shift between domains, they really don't help to bridge the novel notions of shifts presented by geographic disparities. While we have't verified <i>all</i> UDA methods (which is beyond the capability of a single graduate student), we did benchmark GeoNet on many classical as well as standard adaptation methods. First, we define <i>relative accuracy gain</i> of an adaptation method as the improvement in accuracy obtained by a the method over a source-only model as a percentage of gap between a source-only model and the target-supervised upper bound (which is 100% if the method achieves the target supervised upper bound). Then, we show below that many popular UDA methods that give positive gains on other datasets like DomainNet actually give worse accuracies then a source-only model on GeoNet dataset! 
+            <figure>
+              <img src="static/images/da_benchmark.png" width=650> 
+              <figcaption>Many SOTA UDA methods give worse accuracies than a source-only baseline on GeoNet resulting in negative relative gains.</figcaption>
+            </figure>
+            More detailed top-1/top-5 accuracies for each method on all our benchmarks are presented in our paper.
+          </p>
+
+          <p>
+            <b>Do recent advances in pre-training and architectures help?</b> They do, and they don't. From figure below, it is evident that using larger models and larger scale pre-training strategies definitely help in improving the absolute accuracy values, indicating that using larger vision transformers pre-trained on large-scale datasets are generally better than regular ImageNet-pretrained CNNs. However, after fine-tuning on geographically biased datasets, the gap with the target supervised accuracies using these same architecture and various pre-training strategies is still significant, indicating much room for further growth. 
+            <figure>
+              <img src="static/images/ViT-imnet-ua.png" width=700> 
+              <figcaption>Many large-scale architectures and pre-training strategies fail to showcase geographical robustness after fine-tuning on geographically biased datasets.</figcaption>
+            </figure>
+          </p>
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds"> 
+        <h2 class="title is-3">Geographic Distribution of images in GeoNet</h2>
+        <div class="content has-text-justified">
+          <p>
+            <figure>
+              <img src="static/images/geoDist.png" width=750> 
+              <figcaption style="font-size:14px">We show the images per geographical sub-region in both domains on GeoNet. As shown, in Asia, a majority of images are from Japan, India, Korea, China and Taiwan while in USA, a majority of images are from populous regions like California and New York. Note that the color-bar scale is linear for USA and log-scale for Asia.</figcaption>
+            </figure>
+          </p>
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+      @article{kalluri2023gnet
+        author    = {Kalluri, Tarun and Xu, Wangdong and Chandraker, Manmohan},
+        title     = {GeoNet: Benchmarking Unsupervised Adaptation across Geographies},
+        journal   = {CVPR},
+        year      = {2023},
+      },
+</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            <!-- This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>. -->
+            This webpage template is from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. 
+            We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and open-sourcing this template and <a href="https://oasisyang.github.io/">Yang Fu</a> for further improving it as part of <a href="https://oasisyang.github.io/semi-pose/">semi-pose</a> project. We also shoplifted the carousel template from this <a href="https://wordasimage.github.io/Word-As-Image-Page/" >awesome paper.</a> 
+          </p>
+        </div>
+      </div>
+          <p></p>
+        </div>
+      </div>
+</footer>
+
+</body>
+</html>
