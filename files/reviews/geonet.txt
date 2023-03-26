@@ -1,0 +1,109 @@
+################################################################
+## Reviewer 1
+################################################################
+################################################################
+
+Paper Summary:
+
+The paper demonstrates domain gaps caused by geographical distributions of the training data on object recognition as well as place recognition. The paper shows that the existing unsupervised adaptation methods do not work well on the proposed dataset, but does not bother to analyze the cause. The authors also promise to release the dataset used which consist of 190K images from the US and 190K images from Asia. This dataset could serve as an additional benchmark for domain adaptation, however, it is likely not going to be super useful for other applications due to the limited size of the dataset.
+Paper Strengths:
+
+    The motivation is good. The geographical bias in the data is real, and the paper experimentally exposes the domain gap by cross validating the models trained on different geographical domains, although this is not the first paper to demonstrate the phenomenon as mentioned in the paper.
+    The paper introduces a new dataset for domain adaptation with a geographic flavor that the authors promise to release to the public. It could serve as another benchmark for general domain adaptation methods.
+    The paper makes an important observation that existing unsupervised adaptation methods do not work well on the proposed dataset.
+
+Paper Weaknesses:
+
+    The paper does not bother to go after the cause of what is observed. In other words, the paper does not explain/analyze what caused such observations. This leaves the experimental analysis superficial and the readers to remain perplexed and confused. The paper does not leave any clue about “why on earth the existing unsupervised adaptation methods don’t work well on this dataset?”
+    The geographical distribution difference between GeoPlaces and GeoImNet for Asia also makes it hard to interpret the results. One cannot say “USA to Asia is easier than Asia to USA for object recognition while the opposite is true for place recognition” based on the experiment, because their geographical distribution is different.
+    The proposed dataset is a bit too small. Images in the US dataset and the Asia dataset are only 190K each, compared to the Places205 with 2.5M images. It may be useful for fine-tuning or evaluation, but a decently sized deep model would easily overfit on the proposed dataset. (The authors compare its size to the datasets in [58,59,61], but we should also acknowledge that those datasets are presented in workshops.)
+    Practical value of the GeoAsia Data: Asia is very diverse, which cannot be compared with the diversity in the US. Take a look at India vs. Japan, or Saudi Arabia vs. China. I do not know if any meaningful patterns could be learned from GeoAsia data. Thus, I think the GeoAsia data can only serve a limited purpose, for example, measuring the domain shift of the model trained on the GeoUS or the GeoUni data. If the overall dataset size was larger, it could become a very useful dataset as it would allow investigating visual differences in objects and places across countries.
+
+Overall Recommendation: 4: weak accept
+Justification For Recommendation And Suggestions For Rebuttal:
+
+I am excited about the motivation and the dataset of the paper. However, the paper also lacks analysis and there are limitations in the dataset. My rating is between a weak (poster) accept and a borderline.
+Confidence Level: 4: The reviewer is confident but not absolutely certain that the evaluation is correct.
+Additional Comments For Authors:
+
+The authors would need to check the licenses of the Flickr images for the public release of the dataset.
+Final Rating: 4: weak accept
+Final Rating Justification:
+
+The rebuttal partially addressed my concerns. My recommendation is a weak accept if given that the dataset will be publicly released indeed, as it is the main contribution of the paper. I too recommend including table R2 and other experiments presented in the rebuttal that provides some insights about the cause of accuracy drop.
+
+
+################################################################
+## Reviewer 2
+################################################################
+################################################################
+
+
+Paper Summary:
+
+The paper introduces a new large-scale dataset to study the geographic adaption of vision models. It studies variations of the dataset between geo-locations and reveals the interesting facts that major SOTA models are bad in adapting to a new geo-location.
+Paper Strengths:
+
+    Very valuable dataset to motivate a new research field.
+    Insightful analysis on the dataset to reveal the root causes of poor geographic generalization.
+    Insightful comparison of SOTA approaches on different geo-locations.
+
+Paper Weaknesses:
+
+    Finer-grained geo-locations? Both the USA and Asia are large lands. Are objects and backgrounds different in different states or provinces? Finer-grained geo-locations will further promote the paper and avoid a downgraded name of ImageNet-Asia and Places-205-Asia.
+    Comparison to other datasets for geographic adaptation [58,59,61]: is this available? How do other datasets do in terms of the three shifts?
+
+Overall Recommendation: 4: weak accept
+Justification For Recommendation And Suggestions For Rebuttal:
+
+The paper presents a valuable dataset, clear insights of the dataset and interesting comparison among SOTA works in terms of geographic adaptation. We appreciate so much for the statement that the dataset, implementations and evaluations will be made public to promote further research in this area. Paper can be better if the author can rebut against the major weakness above.
+Confidence Level: 4: The reviewer is confident but not absolutely certain that the evaluation is correct.
+Additional Comments For Authors:
+
+Well-done paper. It will be better if the author can target an even larger scope - a world-net beyond the USA and Asia.
+Final Rating: 4: weak accept
+Final Rating Justification:
+
+I would lean to recommand this paper to be accepted in CVPR considering its contribution of the new large-scale dataset. My recommandation is also based on the release of the dataset so that it can boost the transfer learning across geo-locations. If accepted, I would suggest to add your observation why not fragmenting GeoNet into smaller geographical domains and as much detailed comparison with the public available dataset [61] as you can.
+
+
+
+################################################################
+## Reviewer 3
+################################################################
+################################################################
+
+Paper Summary:
+
+This paper has proposed a new dataset, GeoNet, for the geographic adaptation problem. Analysis of distribution shits is done and three types of shifts are introduced: context shift, design shift and prior. Many experiments are done to evaluate the domain adaptation performances of state-of-the-art (SOTA) algorithms.
+Paper Strengths:
+
+A new dataset for the geographic adaptation is provided. This can potentially help the community build models that generalize better to different locations. Several tasks are included, such as scene classification, object classification, and universal domain adaptation.
+
+It is reasonable to divide the distribution shifts to context shift, design shift, and prior shift. Though there are a few questions as described in the weakness session below.
+
+Extensive experiments were done to evaluate SOTA methods. It is interesting to see that many algorithms have a large drop when adapting to images from another geographic domain.
+Paper Weaknesses:
+
+My major concern about this paper is whether it is true that geographic location is the major reason that leads to the accuracy drop of SOTA methods.
+
+There are three domain shifts discussed in this paper: context, design and prior. It makes sense that the first two are related to geographic locations, but not necessarily true for the prior. In the Dataset Curation, it says that the EXIF data is extracted and Flickr API is used to get the GPS locations. Only images with valid geotags were kept and this is only a small fraction of the data. E.g. for the GeoPlaces, only 400K of 2.5M images were kept. This significantly changed the class distribution, or the prior. Many existing works (e.g. [1]) have shown that the data heterogeneity is an important factor to model performance. Therefore it is entirely possible that the model performance is majorly affected by the prior and the prior is majorly affected by the way the images were filtered (EXIF+Flickr API) or collected. Without more thorough experiments, it is hard to rule out this possibility. In the existing experiments, only the overall accuracy drop is reported. It would be better to show quantitatively how each of the three shift affects the performance. And how geographic location is related to those shifts.
+
+Additionally, some additional data was collected. Since the labels are not manually assigned or reviewed, it is unclear what the level of label noise is. Is it possible that the SOTA methods do not perform well because there is too much noise in the training data? More details of the data & label quality control steps need to be presented if there is any.
+
+To make this a more useful dataset, it would be nice to show how model performance could be improved by leveraging this new dataset.
+
+References [1] Oh, et al., "Fedbabu: Towards enhanced representation for federated image classification." ICLR (2022).
+Overall Recommendation: 3: borderline
+Justification For Recommendation And Suggestions For Rebuttal:
+
+Overall, I think it is an important contribution to propose a new geographic domain adaptation dataset and it is interesting to see many SOTA methods do not perform well on this task. However, we must be careful to verify whether it is true that domain gap and performance drop are majorly caused by geographic difference, instead of data filtering methods, label noise etc. I would like to see more details to clarify this in the rebuttal.
+Confidence Level: 4: The reviewer is confident but not absolutely certain that the evaluation is correct.
+Final Rating: 4: weak accept
+Final Rating Justification:
+
+Thank the authors for thorough explanation and experiments in the rebuttal. I think my concerns have been addressed by the additional experiments, such as the randomly 50% - 50% USA & Asia geo-balanced training, and results in table R1 & R2. It is now more convincing that the geography does play an important role in accuracy drop. I recommend at least including table R2 in the paper for clarity. It would be better to add other details either to the paper or supplemental materials.
+
+Additionally, I agree with R2 that it will be great to include the finer-grained geo-locations in the dataset.
+
+
