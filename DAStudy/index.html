@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Rethinking Effectiveness of Unsupervised Domain Adaptation">
+  <meta name="keywords" content="Generalization, Adaptation, Robustness">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GeoNet</title>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title" style="font-size:38px"> Rethinking Effectiveness of Unsupervised Domain Adaptation </h1>
+          <h2 class="title is-4">Under review</h2>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://tarun005.github.io/" target="_blank">Tarun Kalluri,</a> </span>
+              <span class="author-block">
+                <a href="https://sreyas-108.github.io/">Sreyas Ravichandran, </a></span>
+            <span class="author-block">
+              <a href="https://cseweb.ucsd.edu//~mkchandraker/">Manmohan Chandraker </a></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">UC San Diego</span>
+          </div>
+          <!-- <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>,</span>
+          </div> -->
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+<!--              <span class="link-block">-->
+<!--                <a href="../files/papers/GeoNet.pdf"-->
+<!--                   class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon">-->
+<!--                      <i class="fas fa-file-pdf"></i>-->
+<!--                  </span>-->
+<!--                  <span>Paper</span>-->
+<!--                </a>-->
+<!--              </span>-->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=pYvig8rL_1s"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span> Code (Coming soon) </span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+<!--              <span class="link-block">-->
+<!--                <a href="https://drive.google.com/drive/folders/1x2R1AlCaww7VIrYupCxxGZdkm4nVqFLE?usp=sharing"-->
+<!--                   class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon">-->
+<!--                      <i class="fa fa-database"></i>-->
+<!--                  </span>-->
+<!--                  <span>Dataset</span>-->
+<!--                  </a>-->
+<!--              </span>-->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds"> 
+        <!-- <h2 class="title is-3">UDOS for open-world instance segmentation/h2> -->
+        <div class="content has-text-justified">
+
+          <p>
+            <b>tl;dr!</b>: In recent years, significant progress has been made in unsupervised domain adaptation (UDA) through techniques that enable reduction of the domain gap between labeled source domain data and unlabeled target domain data. In this work, we examine the diverse factors that may influence the effectiveness of UDA methods, and devise a comprehensive empirical study through the lens of backbone architectures, quantity of data and pre-training datasets to gain insights into the effectiveness of modern adaptation approaches on standard UDA benchmarks. Our findings reveal valuable observations: (i) the benefits of adaptation methods decrease with advanced backbones, (ii) current methods under-utilize unlabeled data, and (iii) pre-training data matters for downstream adaptation in both supervised and self-supervised settings. To standardize evaluation across various UDA methods, we develop a novel PyTorch framework for domain adaptation and will publicly release the framework, along with the trained models, used in our study.
+          </p>
+          <figure>
+            <img src="static/images/description_plot.png" width=850>
+            <figcaption> An overview of our empirical study: We examine the effectiveness of SOTA UDA approaches through the lenses of backbone architectures, unlabeled data quantity and nature of pretraining data, and gather several useful observations.</figcaption>
+          </figure>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds"> 
+        <h2 class="title is-3">Need for a joint framework</h2>
+        <div class="content has-text-justified">
+          <p style="color:brown;" align="center">
+          </p>
+          <br>
+          <p>
+            <figure>
+              <img src="static/images/plainacc.png" width=500>
+              <figcaption>We illustrate the disparity between various codebases proposed for different UDA methods by noting their difference in accuracies for a plain source only model, which is computed without using any adaptation and should ideally match across implementations. We propose a new PyTorch framework for UDA to standardize evaluation across various methods and facilitate fair comparisons.</figcaption>
+            </figure>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <h2 class="title is-3">Which backbone architectures suit UDA best?</h2>
+        <div class="content has-text-justified">
+          <p style="color:brown;" align="center">
+          </p>
+          <br>
+          <p>
+            <figure>
+              <img src="static/images/backbone1.png" width=500>
+              <figcaption> Comparison of domain robustness of various vision architectures on standard adaptation datasets. We use the source accuracy (λ<sub>s</sub>) and the target accuracy (λ<sub>t</sub>) of a model trained only on source data to calculate the relative drop in accuracy (σ<sub>st</sub>=100 ∗ (λ<sub>s</sub> − λ<sub>t</sub>)/λ<sub>s</sub>, lower the better). Swin transformer shows consistently better robustness to domain shifts on several benchmarks.</figcaption>
+            </figure>
+          </p>
+          <p>
+            <figure>
+              <img src="static/images/backbone2.png" width=500>
+              <figcaption> For each of the UDA methods, we show the gain in accuracy relative to a baseline trained only using source-data. Across datasets, we observe that the benefits offered by UDA approaches over the baseline diminish when using better backbones that have improved domain-robustness properties.</figcaption>
+            </figure>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <h2 class="title is-3">How much unlabeled data does UDA need?</h2>
+        <div class="content has-text-justified">
+          <p style="color:brown;" align="center">
+          </p>
+          <br>
+          <p>
+            <figure>
+              <img src="static/images/unlabeled1.png" width=500>
+              <figcaption> Across different tasks in DomainNet as well as different backbone architectures (Resnet50 in a, b, c and ConvNext-tiny in d), we find that the performance saturates quickly with respect to amount of target data, showing their limited efficiency in utilizing the unlabeled samples. In most cases, even using 25% of the data only leads to less than 1% drop in accuracy.</figcaption>
+            </figure>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds">
+        <h2 class="title is-3">Does pre-training data matter for UDA?</h2>
+        <div class="content has-text-justified">
+          <p style="color:brown;" align="center">
+          </p>
+          <br>
+          <p>
+            <figure>
+              <img src="static/images/pretraining1.png" width=500>
+              <figcaption> We analyze the relationship between nature of data used for supervised pre-training and the downstream adaptation task. Across all the methods, we observe that in-task supervised pre-training significantly helps adaptation. All models use ResNet-50 backbone.</figcaption>
+            </figure>
+          </p>
+          <p>
+            <figure>
+              <img src="static/images/pretraining2.png" width=500>
+              <figcaption> We find that self-supervised pre-training on object-centric images (on ImageNet) help downstream accuracy on object-centric adaptation (on DomainNet and CUB200), while scene-centric pre-training (on Places205) benefit adaptation on scene-centric GeoPlaces task.</figcaption>
+            </figure>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+      @article{kalluri2023rethinking
+        author    = {Kalluri, Tarun and Sreyas Ravichandran and Chandraker, Manmohan},
+        title     = {Rethinking Effectiveness of Unsupervised Domain Adaptation},
+        journal   = {arXiv <TODO>},
+        year      = {2023},
+      },
+</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            <!-- This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>. -->
+            This webpage template is from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. 
+            We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and open-sourcing this template and <a href="https://oasisyang.github.io/">Yang Fu</a> for further improving it as part of <a href="https://oasisyang.github.io/semi-pose/">semi-pose</a> project. We also shoplifted the carousel template from this <a href="https://wordasimage.github.io/Word-As-Image-Page/" >awesome paper.</a> 
+          </p>
+        </div>
+      </div>
+          <p></p>
+        </div>
+      </div>
+</footer>
+
+</body>
+</html>
