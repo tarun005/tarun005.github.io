@@ -1,17 +1,18 @@
-#  Rethinking Effectiveness of Unsupervised Domain Adaptation
+# Rethinking Effectiveness of Unsupervised Domain Adaptation
 
 This is the repository that contains source code for the [Domain Adaptation Study website](https://tarun005.github.io/DAStudy).
 
-<!-- If you find our paper useful for your work please cite:
+If you find this study useful for your work please cite:
 ```
-@inproceedings{kalluri2023dastudy,
-  title={GeoNet: Benchmarking Unsupervised Adaptation across Geographies},
-  author={Kalluri, Tarun and Xu, Wangdong and Chandraker, Manmohan},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages={15368--15379},
-  year={2023}
+@article{kalluri2023rethinking
+  author    = {Kalluri, Tarun and Sreyas Ravichandran and Chandraker, Manmohan},
+  title     = {Rethinking Effectiveness of Unsupervised Domain Adaptation},
+  journal   = {arXiv },
+  year      = {2023},
 }
-``` -->
+```
+
+      
 
 This webpage template is from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. 
 We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and open-sourcing this template and <a href="https://oasisyang.github.io/">Yang Fu</a> for further improving it as part of <a href="https://oasisyang.github.io/semi-pose/">semi-pose</a> project.
