@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="LaGTrAn: Language Guided Transfer Across Domains.">
+  <meta name="keywords" content="Generalization, Adaptation, Robustness, Fairness, Language Guided Generalization">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LaGTrAn</title>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title" style="font-size:38px"> Tell, Don`t Show! Language Guidance Eases
+            Transfer Across Domains in Images and Videos </h1>
+          <!-- <h2 class="title is-4">CVPR 2023</h2> -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://tarun005.github.io/" target="_blank">Tarun Kalluri<sup>1</sup>,</a>  </span>
+            <span class="author-block">
+              <a href="https://www.majumderb.com/" target="_blank">Bodhisattwa Majumder<sup>2</sup>,  </a></span>
+            <span class="author-block">
+              <a href="https://cseweb.ucsd.edu//~mkchandraker/" target="_blank">Manmohan Chandraker<sup>1</sup> </a></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>UC San Diego  </span>
+            <span class="author-block">  </span>
+            <span class="author-block"><sup>2</sup>Allen Institute for AI</span>
+          </div>
+          <!-- <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>,</span>
+          </div> -->
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=pYvig8rL_1s"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span> Code </span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://drive.google.com/file/d/15mBNJY6iqnmn64gRVEQoURjaoIyXxzU0/view?usp=sharing"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fa fa-database"></i>
+                  </span>
+                  <span> Ego2Exo Dataset </span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds"> 
+        <div class="content has-text-justified">
+          <p>
+            <b>tl;dr!</b>: Computer vision models transfer poorly to unlabeled domains, and the current standard of addressing this using unsupervised domain adaptation lacks mechanism for incorporating text guidance. We propose a novel framework called LaGTrAn, which leverages natural language to guide the transfer of discriminative knowledge from labeled source to unlabeled target domains in image and video classification tasks. Despite its simplicity, LaGTrAn is highly effective on a variety of benchmarks including GeoNet and DomainNet. We also introduce a new benchmark called Ego2Exo to facilitate robustness studies across viewpoint variations in videos, and show LaGTrAn's effeciency in this novel transfer setting.
+          </p>
+          <figure>
+            <img src="static/images/intro.png" width=550> 
+            <figcaption>
+              In a domain transfer setting with labeled source and unlabeled target domain data, transferring image classifier incurs significantly more cross-domain drop than text classifiers trained on corresponding captions. We leverage this insight to build a simple framework called <b>LaGTrAn</b> that uses text descriptions easily available in both domains to improve transfer in images and videos.
+            </figcaption>
+          </figure>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds"> 
+        <h2 class="title is-3">LaGTrAn for Language Guided Transfer</h2>
+        <div class="content has-text-justified">
+
+          <p>
+            <b> What is the problem setting? </b> We operate in a setting where we have supervision from a source domain and no supervision from a different target domain. We are interested in transferring discriminative knowledge from the source domain to the target domain, to eventually improve the accuracy on the target domain. New to this setting, we assume access to readily available or easily producible language descriptions for each image in both source and target domains which greatly helps easing the transfer. 
+          </p>
+
+          <p>
+            <b> Don't UDA methods suffice in this setting? </b> While UDA methods have been established to address this problem, they show limitations in handling challenging domain shifts due to their exclusive operation within the pixel-space. Motivated by our observation that semantically richer text modality has more favorable domain transfer properties, we devise a transfer mechanism to use a source-trained text-classifier to generate predictions on the target text descriptions and utilize these predictions as supervision for the corresponding images. As we show in our results, our LaGTrAn achieves better performance then any UDA method even without any complex adaptation procedure. 
+          </p>
+
+          <p>
+            <b> So what does LaGTrAn do differently? </b> LaGTrAn proceeds by first training a BERT-classifier using source captions and labels. From our observations, this would yield more robust pseudo-labels compared to the common image-based transfer, eliminating the need for advanced refinement modules or curriculum training strategies. We then use this trained model to generate pseudo-labels for the target captions, which are then transferred to corresponding, unlabeled target domain images. Using this generated supervision along with source domain data, we jointly train a vision classifier towards image or video classification. 
+          </p>
+
+          <figure>
+            <img src="static/images/MethodFig_animation.gif" width=630> 
+            <figcaption>
+              <b> An overview of training using LaGTrAn </b>
+            </figcaption>
+          </figure>
+
+          <p>
+            <b> Why does LaGTrAn work? </b> A key factor in the success of LaGTrAn is the rich semantic information in the text modality with comparitively reduced domain gaps that guides the transfer of discriminative knowledge from the source to the target domain. This is particularly effective in handling challenging domain shifts where characterizing and bridging domain gaps using images alone is difficult, as we show in our results.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="title is-3" align="center">Ego2Exo Benchmark for Cross-View Transfer in Videos</h2>
+  </div>
+</section>
+
+
+<section class="hero is-light" >
+  <div class="hero-body" style="padding-top: unset" >
+    <div class="container" >
+      <div id="results-carousel" class="carousel results-carousel" >
+
+      <div class="column is-centered has-text-centered" >
+        <h2 class="title is-4"> Get Kitchenware (ego -> exo) </h2>
+        <video autoplay="true" id="v0" loop="true" muted="muted" controls>
+          <source src="videos/ego_Get_kitchenware_&_utensils_iiith_cooking_11_1_2.mp4" type="video/mp4">
+        </video>
+        <video autoplay="true" id="v0" loop="true" muted="muted" controls>
+          <source src="videos/exo_Get_kitchenware_&_utensils_upenn_0714_Cooking_7_2_2.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="column is-centered has-text-centered" >
+        <h2 class="title is-4"> Boil Noodles (ego -> exo) </h2>
+        <video autoplay="true" id="v0" loop="true" muted="muted" controls>
+          <source src="videos/ego_Boil_noodles_in_boiling_water_fair_cooking_06_2_2.mp4" type="video/mp4">
+        </video>
+        <video autoplay="true" id="v0" loop="true" muted="muted" controls>
+          <source src="videos/exo_Boil_noodles_in_boiling_water_fair_cooking_06_2_2.mp4" type="video/mp4">
+        </video>
+      </div>
+      
+      <div class="column is-centered has-text-centered" >
+        <h2 class="title is-4"> Brew Coffee (ego -> exo) </h2>
+        <video autoplay="true" id="v0" loop="true" muted="muted" controls>
+          <source src="videos/ego_Brew_coffee_(french_press)_uniandes_cooking_002_6_2.mp4" type="video/mp4">
+        </video>
+        <video autoplay="true" id="v0" loop="true" muted="muted" controls>
+          <source src="videos/exo_Brew_coffee_(french_press)_uniandes_cooking_002_6_2.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="column is-centered has-text-centered" >
+        <h2 class="title is-4"> Check Recipe (ego -> exo) </h2>
+        <video autoplay="true" id="v0" loop="true" muted="muted" controls>
+          <source src="videos/ego_Check_paper_recipe_georgiatech_cooking_01_02_2_2.mp4" type="video/mp4">
+        </video>
+        <video autoplay="true" id="v0" loop="true" muted="muted" controls>
+          <source src="videos/exo_Check_paper_recipe_georgiatech_cooking_01_02_2_2.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="column is-centered has-text-centered" >
+        <h2 class="title is-4"> Make Chai Tea (ego -> exo) </h2>
+        <video autoplay="true" id="v0" loop="true" muted="muted" controls>
+          <source src="videos/ego_Make_chai_tea_sfu_cooking_009_5_2.mp4" type="video/mp4">
+        </video>
+        <video autoplay="true" id="v0" loop="true" muted="muted" controls>
+          <source src="videos/exo_Make_chai_tea_sfu_cooking_006_1_2.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="column is-centered has-text-centered" >
+        <h2 class="title is-4"> Prepare Milk (exo -> ego) </h2>
+        <video autoplay="true" id="v0" loop="true" muted="muted" controls>
+          <source src="videos/exo_Prepare_milk_(frothed)_uniandes_cooking_002_6_2.mp4" type="video/mp4">
+        </video>
+        <video autoplay="true" id="v0" loop="true" muted="muted" controls>
+          <source src="videos/ego_Prepare_milk_(frothed)_uniandes_cooking_001_12_2.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <div class="column is-centered has-text-centered" >
+        <h2 class="title is-4"> Clean Up (exo -> ego) </h2>
+        <video autoplay="true" id="v0" loop="true" muted="muted" controls>
+          <source src="videos/exo_Clean_up_upenn_0714_Cooking_3_3_2.mp4" type="video/mp4">
+        </video>
+        <video autoplay="true" id="v0" loop="true" muted="muted" controls>
+          <source src="videos/ego_Clean_up_iiith_cooking_75_2_2.mp4" type="video/mp4">
+        </video>
+      </div>      
+</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds"> 
+        <!-- <h2 class="title is-3">Ego2Exo Benchmark for Cross-View Transfer in Videos</h2> -->
+        <div class="content has-text-justified">
+          <p>
+            <b>What is Ego2Exo?</b> We leverage the recently proposed <a href="https://docs.ego-exo4d-data.org/" target="_blank">Ego-Exo4D</a> dataset to create a new benchmark called Ego2Exo to study ego-exo transfer in videos. Ego2Exo contains videos from both egocentric and exocentric viewpoints, and is designed to facilitate robustness studies across viewpoint variations in videos. 
+          </p>
+
+          <p>
+            <b>Why do we need Ego2Exo?</b> It is fundamental to transfer knowledge learned from one view-point and apply it on variety of other viewpoints in videos. Despite rapid advances in methods and benchmarks for video domain adaptation, little insight is available into their ability to address this challenging setting between ego (first-person) and exo (third-person) perspectives in videos. Ego2Exo is designed as a new testbed to address this gap.
+          </p>
+
+          <p>
+            <b>How is Ego2Exo created?</b> We curate our dataset using the recently proposed Ego-Exo4D dataset, utilizing their keystep annotations for action labels, and atomic descriptions as text supervision. We map the keystep labels with the atomic narrations for each action segment using the provided timestamps, and manually remap the labels to ease the difficult task of predicting very fine-grained action classes from short segments (eg: <i>add coffee beans</i> vs. <i>add coffee grounds</i>). The complete details about our dataset creation process are included in our <a href="" target="_blank">paper</a>. 
+          </p>
+
+          <p>
+            <b>Where is Ego2Exo available?</b> You should first download the videos from Ego-Exo4D benchmark following their <a href="https://docs.ego-exo4d-data.org/getting-started/" target="_blank">guidelines</a>. You can then download the <i>json</i> file containing the annotations and corresponding metadata for Ego2Exo from <a href="https://drive.google.com/file/d/15mBNJY6iqnmn64gRVEQoURjaoIyXxzU0/view?usp=sharing" target="_blank">this link</a>. 
+          </p>
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-two-thirds"> 
+        <h2 class="title is-3">Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            <b>How does LaGTrAn compare with other UDA methods?</b> We compare LaGTrAn with several UDA methods on the challenging GeoNet dataset. As shown below, LaGTrAn outperforms all UDA methods by a significant margin, indicating its effectiveness in handling challenging domain shifts.
+            <figure>
+              <img src="static/images/geonet_results.png" width=550> 
+              <figcaption>
+                LaGTrAn outperforms all UDA methods by a significant margin on the challenging GeoNet dataset.
+              </figcaption>
+            </figure>
+          </p>
+
+          <p>
+            <b>How well does LaGTrAn extend to videos?</b> We evaluate LaGTrAn on the novel Ego2Exo benchmark and show that it yields significant gains in this novel transfer setting, validating the hypothesis that language offers a natural guidance for transfer across domains in videos. 
+            <figure>
+              <img src="static/images/video_results.png" width=450> 
+              <figcaption>
+                LaGTrAn outperforms video-UDA as well as video-language based methods on the Ego2Exo benchmark.
+              </figcaption>
+            </figure>
+          </p>
+
+          <p>
+            <b>Visualization of image vs text-based retrievals </b> LaGTrAn retrieves more semantically similar images using text-based retrievals compared to image-based retrievals for a given source image, indicating the effectiveness of LaGTrAn in leveraging text guidance for transfer across domains. 
+            <figure>
+              <img src="static/images/visualization.png" width=450> 
+              <!-- <figcaption>
+                LaGTrAn retrieves more semantically similar images using text-based retrievals compared to image-based retrievals for a given source image.
+              </figcaption> -->
+            </figure>
+          </p>
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+      @article{kalluri2024lagtran,
+        author    = {Kalluri, Tarun and Majumder, Bodhisattwa and Chandraker, Manmohan},
+        title     = {Tell, Don`t Show! Language Guidance Eases Transfer Across Domains in Images and Videos},
+        journal   = {arxiv},
+        year      = {2024},
+        url       = {https://arxiv.org/abs/2024.12345},
+      },
+</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            <!-- This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>. -->
+            This webpage template is from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. 
+            We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and open-sourcing this template and <a href="https://oasisyang.github.io/">Yang Fu</a> for further improving it as part of <a href="https://oasisyang.github.io/semi-pose/">semi-pose</a> project.
+          </p>
+        </div>
+      </div>
+          <p></p>
+        </div>
+      </div>
+</footer>
+
+</body>
+</html>
