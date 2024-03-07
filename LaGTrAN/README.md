@@ -1,17 +1,6 @@
-# GeoNet - Geographical Domain Adaptation
+# LagTran - Language Assisted Domain Transfer
 
-This is the repository that contains source code for the [GeoNet website](https://tarun005.github.io/GeoNet).
-
-If you find GeoNet useful for your work please cite:
-```
-@inproceedings{kalluri2023geonet,
-  title={GeoNet: Benchmarking Unsupervised Adaptation across Geographies},
-  author={Kalluri, Tarun and Xu, Wangdong and Chandraker, Manmohan},
-  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
-  pages={15368--15379},
-  year={2023}
-}
-```
+This is the repository that contains source code for the [LagTraN website](https://tarun005.github.io/lagtran).
 
 This webpage template is from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>. 
 We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and open-sourcing this template and <a href="https://oasisyang.github.io/">Yang Fu</a> for further improving it as part of <a href="https://oasisyang.github.io/semi-pose/">semi-pose</a> project.
