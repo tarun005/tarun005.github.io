@@ -1,0 +1,146 @@
+############################################################
+###################### Reviewer 1 ##########################
+############################################################
+
+Summary:
+
+This paper is focused on the unsupervised domain adaptation task, where labeled source data and unlabeled target data are available and the objective is to train image classifiers to generalize to the target domain. In this paper, access to natural language descriptions for both source and target data is also available. A method is proposed to use these text descrptions to guide domain adaptation. A BERT classifier is trained to create pseudo labels for target captions and corresponding images. These pseudo labels are then used for joint training along with the source labeled data.
+Strengths And Weaknesses:
+
+Strengths:
+
+    Elegant idea that leverages recent advances in vision-language modeling.
+    Sound experimental settings, relevant datasets, baselines, evaluation metrics. Results on both image and video classification.
+    The paper is well written, figures and tables are organized in a way that helps readability.
+
+Weaknesses:
+
+    Choice of datasets -- I am unclear on why DomainNet and GeoNet were specifically chosen.
+    Exhaustiveness of results -- prior work has found that UDA/DG methods don't have consistent results across benchmarks (see https://arxiv.org/abs/2007.01434). With that context, it would be important to rigorously test of several benchmarks. See for example the datasets mentioned in https://github.com/facebookresearch/DomainBed
+    Related work can use some additions:
+
+    https://link.springer.com/chapter/10.1007/978-3-031-19827-4_36 (ECCV 2022) looks at the effect of V&L pretraining on domain adaptation and generalization
+    https://ojs.aaai.org/index.php/AAAI/article/view/16927/16734 (AAAI 2021) assumes access to attributes characterizing the target domain
+
+    Liu et al. 2023 (https://arxiv.org/pdf/2308.09931.pdf) is cited in related work but not used for experimental comparisons.
+
+Questions:
+
+    It seems that LAGTRAN doesn't perform better than CLIP when going from any non-real domain to Real. Any insights behind why this might be so?
+
+Limitations:
+
+no limitations section, but last sentence of conclusion provides some hints. A separate limitations section (eg. in appendix) would help.
+Ethics Flag: No
+Soundness: 3: good
+Presentation: 3: good
+Contribution: 2: fair
+Rating: 4: Borderline reject: Technically solid paper where reasons to reject, e.g., limited evaluation, outweigh reasons to accept, e.g., good evaluation. Please use sparingly.
+Confidence: 5: You are absolutely certain about your assessment. You are very familiar with the related work and checked the math/other details carefully.
+Code Of Conduct: Yes
+
+############################################################
+###################### Reviewer 2 ##########################
+############################################################
+
+Summary:
+
+Usual Domain Adaptation techniques use source domain images with labels and target domain images without labels during training. LaGTran trackles Domain Adaptation by leveraging descriptions/meta-data availble for target domain along with the labeled source domain images and descriptions. Utilizing the smaller domain gap in the text descriptions of source and target, LaGtran is able to bridge the large domain gap in the image space. They don't require text description during inference time. Another contribution of this paper is to introduce a new dataset Ego2Exo (based on Ego-Exo4D) that specifically includes text descriptions along with video segments. They also test LaGTran method on this dataset and achieve good results.
+Strengths And Weaknesses:
+Strength
+
+    The major strength of the paper is the practical use of text descriptions available in meta-data to achieve SOTA performance. Although this makes the problem definition a little different from the baselines, it is a practical approach as meta data is available during training for many cases.
+
+    Authors introduce Ego2Exo dataset that has video segments along with descriptions. This sets the stage for further research in utilizing textual guidance to train video classifier networks.
+
+3 Weakness
+
+    Pg. 4 Line 208: Equation 3 doesn't match with the description given in the preceding paragraph. Specifically, the authors say that they combine psuedo-labled target images ($\hat{D_t}$) with manually labeled source images (D_t) for training. This means the training is done in the joint dataset $D = \hat {D_t} ∪ D_t$. Minimizing empirical risk over this dataset D is different than minimizing the sum of empirical risk on two different dataset. To illustrate the difference, imagine that the target dataset has much fewer images than source dataset. Then miminmizing the sum would imply that sampling is done disproportionately higher from target dataset. So, instead the equation 3 should be:
+
+            argmin_\theta E_{(x, y) \tilde \hat{D_t} ∪ D_t} L_{CE}(G(x; \theta), y)
+
+    Pg. 5 Section 4.2 Line 254: Authors claim they beat Strong baselines and they sure do beat the baselines but baselines are inherently handicapped due to the difference in training dataset. None of the baseline use the text descriptions from the dataset while LaGTran does. In Pg. 4 Line 175: Authors say that They use a pre-trained BERT model and fine-tune it on Source domain data. However using such pre-trained text model means that the Domain Gap in the text space is almost non-existent. Authors don't include statistics on the accuracy of psuedo-labels obtained from using the text descriptions. The description of Figure 7 is not clear but if Figure 7 shows the accuracy of pseudo-lables then the accuracy of ~70% in target domain for text-encoder entails that the image model has ineffect ~70% of the correct labels for target domain during training. And thus high accuracy in target domain is no surprise.
+
+Questions:
+
+Training for a new target domain requires text descriptions which in some case (like web) may be readily available as meta-data, however if no description is available then LaGTran needs to rely on other pre-trained model (as they have used BLIP-2 for DomainNet) to generate the descriptions. This is effectively utilizing the large domain over which the caption-generating model has been trained. How well does this technique work for novel domains where even the caption-generating model hasn't seen any similar style samples either?
+Limitations:
+
+N/A
+Ethics Flag: No
+Soundness: 3: good
+Presentation: 3: good
+Contribution: 3: good
+Rating: 6: Weak Accept: Technically solid, moderate-to-high impact paper, with no major concerns with respect to evaluation, resources, reproducibility, ethical considerations.
+Confidence: 4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.
+Code Of Conduct: Yes
+
+############################################################
+###################### Reviewer 3 ##########################
+############################################################
+
+Summary:
+
+This paper aims to propose a language-guided framework in the setting of unsupervised domain adaptation for image classification and video action recognition tasks by using the assumption of the presence/availability of text descriptions tied to the target domain images. Specifically, a text classifier is first trained on the description-label data of the source domain using which the labels are inferred as pseudo labels for the target domain descriptions. Lastly, an image model is trained jointly on the source labeled data and the target data with pseudo labels which shows improved performance across the target domain during testing. Additionally, a new ego-exo video-based domain adaptation dataset is proposed and the proposed training framework works well in that case too. Ablation studies are conducted to justify the design choices used in the framework.
+Strengths And Weaknesses:
+
+Strengths:
+
+    The idea of utilizing language guidance in the unsupervised domain adaptation setting is motivating.
+    The proposed method is clean and effective.
+    The method shows notable gains across various benchmarks.
+    The paper is supplemented with important ablation studies and analysis.
+    Paper is well-written and easy to read.
+
+Weaknesses:
+
+    I think, having the textual data in the form of descriptions tied with their corresponding target-domain images is not very practical. If one has a description available for the target images, I think then one can also curate labels out of it.
+    Currently, BLIP-2 is used to generated captions for the target images. It will be important to see if BLIP-2 can provide direct labels for the target images as well like image recognition?
+
+Questions:
+
+Kindly refer to the weaknesses section for the questions.
+Limitations:
+
+The authors have added a discussion on the potential negative societal impact of their work in the paper.
+Ethics Flag: No
+Soundness: 3: good
+Presentation: 3: good
+Contribution: 2: fair
+Rating: 6: Weak Accept: Technically solid, moderate-to-high impact paper, with no major concerns with respect to evaluation, resources, reproducibility, ethical considerations.
+Confidence: 5: You are absolutely certain about your assessment. You are very familiar with the related work and checked the math/other details carefully.
+Code Of Conduct: Yes
+
+############################################################
+###################### Reviewer 4 ##########################
+############################################################
+
+Summary:
+
+This paper proposes a LaGTran, which utilizes text descriptions from meta data or pre-trained image captioning model to help transfer of labeled source data to unlabeled target with domain gaps. Previous unsupervised adaptation methods are all operated on image-space.
+Strengths And Weaknesses:
+
+Strengths:
+
+    The method is easy to understand
+    The experiments are very comprehensive
+    The Figure 6 is very helpful to understand the reduced domain gap between texts than images
+
+Weaknesses:
+
+    The approach using additional text data, which is unfair to compare with previous unsupervised adaptation methods. High level speaking, language data is somehow easier to learn from, because it is already good features processed by human. While image data is very hard to learn from. Using metadata associated with text is SSL to some extend, while it is different from SSL directly learning from visual natural signal, that's why DINO v2 cannot be better than methods like CoCa. Additionally, using caption from BLIP-2 learned from web-scale vision-language data also leverage this type of resource. My point is if you want to using this type of data, then you should not compare with unsupervised methods, using BLIP-2 directly for zero-shot target domain classification may be even better (I noticed the author tested CLIP in Table 1, but why don't test BLIP-2, because it is the exact captioning model this paper used). This work is just like distilling knowledge in human language (or large VLM) to vision classifier, the performance gain is expected, and the idea is not novel enough to me.
+    The tSNE evidence provided in Figure 3 is not convincing enough for me. Can author provides experiments with using only text classifier for domain transfer (do captioning on test set and using the trained text classifier to classify, if it is better than image classifier, then it can tell that text modality can be more robust) This is different with the results in Table 1, because you can still access manual supervision used in LaGTran.
+
+Questions:
+
+See weakness for my concern, the author can provide more justification to convince me about this two points.
+Limitations:
+
+the Broader Impact Statement section already gives enough content about social impact. However, the author does not talk about current limitations of the method. I think the pipeline requires external PTMs and more complex training strategy can be one limitation.
+Ethics Flag: No
+Soundness: 2: fair
+Presentation: 3: good
+Contribution: 2: fair
+Rating: 5: Borderline accept: Technically solid paper where reasons to accept outweigh reasons to reject, e.g., limited evaluation. Please use sparingly.
+Confidence: 4: You are confident in your assessment, but not absolutely certain. It is unlikely, but not impossible, that you did not understand some parts of the submission or that you are unfamiliar with some pieces of related work.
+Code Of Conduct: Yes
