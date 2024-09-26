@@ -1,0 +1,231 @@
+########################
+Reviewer 1
+-----------
+ 2. Summary. In 5-7 sentences, describe the key ideas, experimental or theoretical results, and their significance.
+
+    To better understand the performance of unsupervised domain adaptation, this paper investigates three different factors in UDA: the choice of backbone networks, the sample efficiency of target data, and the type of pre-training data. Several observations are obtained from the empirical study.
+
+3. Strengths. Consider the significance of key ideas, experimental or theoretical validation, writing quality, data contribution. Explain clearly why these aspects of the paper are valuable. Short bullet lists do NOT suffice.
+
+    1. The paper is well-organized, and the writing is easy to follow.
+    2. The experiments are comprehensive, involving various backbone networks and pre-training as well as downstream datasets.
+    3. It is much more significant to fairly benchmark various existing UDA methods than solely focusing on improving the accuracy through complex combinations of techniques.
+
+4. Weaknesses. Consider the significance of key ideas, experimental or theoretical validation, writing quality, data contribution. Clearly explain why these are weak aspects of the paper, e.g., why a specific prior work has already demonstrated the key contributions, or why the experiments are insufficient to validate the claims, etc. Short bullet lists do NOT suffice. Be specific!
+
+    1. The significance of this paper is limited despite the abundant empirical efforts. The obtained observations are neither novel nor surprising for researchers in transfer learning. To be specific, the factor of backbone networks has been studied in a prior UDA publication [41]. The effect of pre-training data on transfer learning performance to downstream tasks has also been widely studied in the representation learning and transfer learning community [A, B]. Although the observation of the low sample efficiency of existing methods is interesting, the analysis of this factor is quite limited with neither in-depth theoretical study nor comprehensive empirical study on various UDA methods. For example, are the reasons the same behind target accuracy saturation for various adaptation methods listed in L185-L195, especially the distribution alignment methods and self-training methods?
+
+    2. Some key experimental settings are unreliable, making the conclusion on sample efficiency unreliable. Only using the percentage of targe data to show results in Figure 4 is misleading. DomainNet is a 365-class benchmark while VisDA is a 12-class benchmark. For VisDA, 10% target data would be around 5,000 images, which is sufficient for the easier 12-class classification task as shown in Figure 4(d). However, the case is different for DomainNet. For the Real2Clipart task, 10% of target data would also be around 5,000 images, but Figure 4(a) shows that the target-specific UDA method MEMSAC does not saturate with more target data.
+
+    [A] Self-Supervised Pretraining Improves Self-Supervised Pretraining. WACV 2022
+    [B] Don't Stop Pretraining: Adapt Language Models to Domains and Tasks. ACL 2020
+
+5. Paper rating (pre-rebuttal).
+
+    Borderline
+
+7. Justification of rating. What are the most important factors in your rating?
+
+    The concern is mostly on the limited significance and insights.
+
+8. Are there any serious ethical/privacy/transparency/fairness concerns? If yes, please also discuss below in Question 9.
+
+    No
+
+10. Is the contribution of a new dataset a main claim for this paper? Have the authors indicated so in the submission form?
+
+    No dataset contribution claim
+
+14. Final rating based on ALL the reviews, rebuttal, and discussion (post-rebuttal).
+
+    Borderline Accept
+
+15. Final justification (post-rebuttal).
+
+    I have carefully read the rebuttal and part of my concerns were addressed. I am happy to change the score to borderline accept.
+#########################
+
+
+########################
+
+Reviewer 2
+-----------
+
+ 2. Summary. In 5-7 sentences, describe the key ideas, experimental or theoretical results, and their significance.
+
+
+    This paper studies the effectiveness of various Unsupervised Domain Adaptation (UDA) methods for improving the generalization of image-classification models on target domain with a unified training and evaluation benchmark. The authors propose a unified UDA-bench that facilitates fair comparisons across UDA methods. Additionally, the authors perform a controlled empirical study by evaluating the effect of the backbone architecture, the amount of unlabeled target domain data, and the effect of pre-training dataset on various UDA methods.
+
+3. Strengths. Consider the significance of key ideas, experimental or theoretical validation, writing quality, data contribution. Explain clearly why these aspects of the paper are valuable. Short bullet lists do NOT suffice.
+
+
+    1. This paper is well-written and easy to follow.
+
+    2. Experiments are extensive and comprehensive.
+
+    3. This paper provides many valuable insights into existing UDA methods.
+
+4. Weaknesses. Consider the significance of key ideas, experimental or theoretical validation, writing quality, data contribution. Clearly explain why these are weak aspects of the paper, e.g., why a specific prior work has already demonstrated the key contributions, or why the experiments are insufficient to validate the claims, etc. Short bullet lists do NOT suffice. Be specific!
+
+    1. The authors only compared to the following types of UDA methods, including adversarial (DANN [25], CDAN [50]), non-adversarial (MDD [105], MCC [37], DALN [14]), consistency-based (MemSAC [39], AdaMatch [7]), alignment-based (ToAlign [98]) and pseudo-label based [109] methods. It would be better to also include other contrastive domain adaptation methods, e.g. [1, 2].
+
+
+    2. It would be better to also provide the results on ImageNet-C [3] by comparing different UDA methods.
+
+
+    3. The metric defined by the relative cross-domain accuracy drop seems not reasonable. Since $\lamba_s$ is already very high with transformer, even with the same $\lamba_t - \lamba_s$ with the resnet. $ $\lamba_t - \lamba_s$/ \lamba_s$ is still lower than the resnet. This would make the conclusion not accurate.
+
+
+
+    Reference:
+
+    [1] Contrastive Adaptation Network for Unsupervised Domain Adaptation, CVPR 2019
+    [2] Cross-Domain Contrastive Learning for Unsupervised Domain Adaptation, IEEE Transactions on Multimedia, 2022
+    [3] Benchmarking Neural Network Robustness to Common Corruptions and Perturbations, ICLR 2019
+
+
+
+5. Paper rating (pre-rebuttal).
+
+    Borderline
+
+7. Justification of rating. What are the most important factors in your rating?
+
+    This paper is an interesting empirical study, well-written and easy to follow. Some more experiments are needed to make it more comprehensive.
+
+8. Are there any serious ethical/privacy/transparency/fairness concerns? If yes, please also discuss below in Question 9.
+
+    No
+
+9. Limitations and Societal Impact. Have the authors adequately addressed the limitations and potential negative societal impact of their work? Discuss any serious ethical/privacy/transparency/fairness concerns here. Also discuss if there are important limitations that are not apparent from the paper.
+
+    Yes, no potential negative societal impact.
+
+10. Is the contribution of a new dataset a main claim for this paper? Have the authors indicated so in the submission form?
+
+    No dataset contribution claim
+
+14. Final rating based on ALL the reviews, rebuttal, and discussion (post-rebuttal).
+
+    Borderline Accept
+
+15. Final justification (post-rebuttal).
+
+    The authors's rebuttal addressed some concerns, but the metrics is not fair enough, using relative improvement does not reflect the property in the domain adaptation, since it is easy to be influenced by the base metric. If the base accuracy is low, the relative improvement would be easily very high. 
+
+
+########################
+
+########################
+
+Reviewer 3
+------------
+ 2. Summary. In 5-7 sentences, describe the key ideas, experimental or theoretical results, and their significance.
+
+    The authors conduct a systematic study on different factors which will influence the performance of domain adaptation. For a fair study, the authors develop a PyTorch framework for different UDA methods. The reviewer checks the supplement and finds the code.
+
+3. Strengths. Consider the significance of key ideas, experimental or theoretical validation, writing quality, data contribution. Explain clearly why these aspects of the paper are valuable. Short bullet lists do NOT suffice.
+
+    Well, this kind of work may not be so surprising for people, but it is necessary for the era of UDA. The reviewer is not familiar with the recent trend of UDA, but the reviewer believes the authors provide a comprehensive study on the influence of model/unlabeled data/pre-training data and it is most likely be beneficial to the community, especially the authors promise to open-source the code and models.
+
+4. Weaknesses. Consider the significance of key ideas, experimental or theoretical validation, writing quality, data contribution. Clearly explain why these are weak aspects of the paper, e.g., why a specific prior work has already demonstrated the key contributions, or why the experiments are insufficient to validate the claims, etc. Short bullet lists do NOT suffice. Be specific!
+
+    1. Please do open-source the models and code if the paper receive an acceptance. The reviewer gives a positive score because the reviewer believes the authors will do so as they promise. Without the code and models, the contribution of the work will be largely discounted.
+
+    2. It is still a pity that there is no results of large-scale pre-trained vision-language models. VLMs are considered to have better generalized capability than image only pre-traine models. Hope to see these results in a future version.
+
+    3. Hope to see results of larger models (base or large) in the future version, especially for recent architecture like Swin and ConvNext. It is costly but also interesting.
+    3.1 Will UDA method with a larger backbone can exploit the data better? This should be an influential factor.
+
+5. Paper rating (pre-rebuttal).
+
+    Weak Accept
+
+7. Justification of rating. What are the most important factors in your rating?
+
+    Please check the Point 1&2&3 in the Weaknesses.
+
+8. Are there any serious ethical/privacy/transparency/fairness concerns? If yes, please also discuss below in Question 9.
+
+    No
+
+10. Is the contribution of a new dataset a main claim for this paper? Have the authors indicated so in the submission form?
+
+    No dataset contribution claim
+
+14. Final rating based on ALL the reviews, rebuttal, and discussion (post-rebuttal).
+
+    Weak Accept
+
+15. Final justification (post-rebuttal).
+
+    Thanks for the response. They solve my concerns.
+
+########################
+
+########################
+
+Reviewer 4
+------------
+
+ 2. Summary. In 5-7 sentences, describe the key ideas, experimental or theoretical results, and their significance.
+
+    This study delves into the factors influencing the efficacy of domain adaptation techniques. In pursuit of this goal, the study presents UDA-Bench, a framework that centers on backbone architectures, the quality of unlabeled data, and pre-training datasets. Several key findings emerge from this benchmark, notably indicating that contemporary advanced backbones may diminish the effectiveness of domain adaptation methods.
+
+3. Strengths. Consider the significance of key ideas, experimental or theoretical validation, writing quality, data contribution. Explain clearly why these aspects of the paper are valuable. Short bullet lists do NOT suffice.
+
+    + Studying the important factors that affect domain adaptation methods makes sense. It's good to compare and test backbone architectures, the quality of unlabeled data, and different pre-training datasets.
+    + The benchmark, UDA-Bench, is well-established and follows a good standard. Common domain adaptation methods are considered in the benchmark.
+    + The insights shared in Lines 63-85 are helpful, especially those about how much unlabeled data you have and how the pre-training data affects things.
+
+4. Weaknesses. Consider the significance of key ideas, experimental or theoretical validation, writing quality, data contribution. Clearly explain why these are weak aspects of the paper, e.g., why a specific prior work has already demonstrated the key contributions, or why the experiments are insufficient to validate the claims, etc. Short bullet lists do NOT suffice. Be specific!
+
+    - Given that this study is empirical, its insights could indeed inspire the development of new domain adaptation methods by shedding light on effective strategies benchmarked against key factors. Please discuss on this point.
+    - To clarify the distinction from Kim et al. [42], please provide a clearer explanation. The current illustrations are not very convincing (e.g., Line 390-393)
+    - Here's an open suggestion: While this work utilizes ImageNet [73], Places-205 [107], and iNaturalist [94] for pre-training datasets, it might be worth considering synthetic data as well. For instance, images generated from diffusion models [a-c] could be included. This suggestion stems from recent research indicating the potential effectiveness of synthetic data in pre-training models.
+    [a] Is synthetic data from generative models ready for image recognition? In ICLR 2023
+    [b] Learning Vision from Models Rivals Learning Vision from Data. In CVPR 2024
+    [c] StableRep: Synthetic Images from Text-to-Image Models Make Strong Visual Representation Learners. In NeurIPS 2023
+
+5. Paper rating (pre-rebuttal).
+
+    Weak Accept
+
+7. Justification of rating. What are the most important factors in your rating?
+
+    This study presents a robust benchmark for examining crucial factors in domain adaptation, yielding several significant insights. However, it would benefit from clarifying distinctions from prior work [42] and addressing the implications of a new domain adaptation method and the impact of synthetic data.
+
+8. Are there any serious ethical/privacy/transparency/fairness concerns? If yes, please also discuss below in Question 9.
+
+    No
+
+9. Limitations and Societal Impact. Have the authors adequately addressed the limitations and potential negative societal impact of their work? Discuss any serious ethical/privacy/transparency/fairness concerns here. Also discuss if there are important limitations that are not apparent from the paper.
+
+    This work has initiated a discussion on limitations from three perspectives:
+    Firstly, it examines the constraints within the scope of image classification.
+    Secondly, it acknowledges that factors beyond backbone architectures, the quality of unlabeled data, and pre-training datasets may also influence outcomes. Please give an example of other factors. It is not clear here.
+    Thirdly, while the primary focus is on unsupervised domain adaptation, exploring semi-supervised and universal domain adaptation methods could offer intriguing avenues for further research.
+
+10. Is the contribution of a new dataset a main claim for this paper? Have the authors indicated so in the submission form?
+
+    No dataset contribution claim
+
+11. Additional comments to author(s). Include any comments that may be useful for revision but should not be considered in the paper decision.
+
+    The supplementary provides codes and details of benchmark. Please release them once this submision is accepted.
+
+14. Final rating based on ALL the reviews, rebuttal, and discussion (post-rebuttal).
+
+    Borderline Accept
+
+15. Final justification (post-rebuttal).
+
+    I have thoroughly reviewed the rebuttal and the comments from other reviewers. The rebuttal has effectively clarified the distinctions between this submission and reference [42], addressing my primary concern. Additionally, the new results presented for ImageNet-C, along with the discussions on the novel method and synthetic data, have been informative.
+
+    Please ensure that the code, including datasets, models, and results, is made publicly available.
+
+    [Important] During the disucssion, I have checked the paper regarding the relative metric, and I believe it presents a critical issue, particularly for the observations in Section 5.1 (“Which backbone architectures suit UDA best?”). For instance, the observation “UDA Gains Diminish With Newer Architectures” (Line 262) could potentially be the opposite, as pointed out by R2. As noted in Line 247, “this metric is sensitive to the absolute value of the source accuracy,” which necessitates re-evaluating this metric choice.
+
+    Please also report the result of absolute accuracy change and discuss the potential limitation of used metrics. Also, please be carefully when reporting the observations in Section 5.1. 
+
+########################
